@@ -1,0 +1,1246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>2.0</version>
+    <date>2016-02-05T09:37:05Z</date>
+    <groups>
+        <group>
+            <name>Cloudstack Management</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template CloudStack Management</template>
+            <name>Template CloudStack Management</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Cloudstack Management</name>
+                </group>
+            </groups>
+            <applications/>
+            <items>
+                <item>
+                    <name>CloudStack avaiable CPU alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.available_cpu_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack avaiable memory alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.available_memory_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack avaiable secondary storage alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.available_secondary_storage_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>2</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack avaiable storage alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.available_storage_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack console proxy migrate alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.console_proxy_migrate_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack console proxy state alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.console_proxy_state_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack direct attached public IP alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.direct_attached_public_ip_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack domain router migrate alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.domain_router_migrate_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack domain router state alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.domain_router_state_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack management status</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.managment_node_status</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack private Ip alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.private_ip_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack remaining storage alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.remaining.storage_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack SSvm stop alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.ssvm_stop_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack SSvm storage issue alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.ssvm_storage_issue_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack update resource count alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.update_resource_count_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack usage sanity result alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.usage_sanity_result_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack usage server result alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.usage_server_result_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack usage server status</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.usage_server_status</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description>No usage server process running</description>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack user VM migrate alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.user_vm_migrate_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack user VM state alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.user_vm_state_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack virtual network public IP alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.virtual_network_public_ip_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>CloudStack vlan alert</name>
+                    <type>2</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>cs_cluster.vlan_alert</key>
+                    <delay>0</delay>
+                    <history>7</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>4</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <macros>
+                <macro>
+                    <macro>{$CS_CAPACITY_CHECK_INT}</macro>
+                    <value>1m</value>
+                </macro>
+                <macro>
+                    <macro>{$CS_TRAP_ALERT_INT}</macro>
+                    <value>11m</value>
+                </macro>
+            </macros>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Console Proxy VM Restart Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Management Service Stop by Admin</name>
+                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Console Proxy VM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.domain_router_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Domain Router VM Restart Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Management Service Stop by Admin</name>
+                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Domain Router VM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Domain SSVM Restart Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Management Service Stop by Admin</name>
+                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Percentage Available CPU</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Percentage Available Memory</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.available_secondary_storage_alert.str(Available Secondary Storage)}=1 and {Template CloudStack Management:cs_cluster.available_secondary_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Percentage Available Secondary Storage</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Percentage Available Storage</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Remaining Storage</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Unallocated Private IPs</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Unallocated Shared Network IPs</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description>The same as Direct Attach Public IP low</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+            <name>Cloudstack Low Unallocated Vlan</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+            <name>Cloudstack Management Service Stop by Admin</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.usage_server_status.nodata({$CS_TRAP_ALERT_INT})}=0 and {Template CloudStack Management:cs_cluster.usage_server_status.str(No usage server)}=1</expression>
+            <name>Cloudstack No usage server process running</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack SSVM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(Failed to deploy Vm with,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack User VM Creation Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack User VM Restart Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Management Service Stop by Admin</name>
+                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack User VM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+    </triggers>
+</zabbix_export>
