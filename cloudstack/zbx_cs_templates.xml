@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2016-02-05T09:37:05Z</date>
+    <date>2016-02-15T09:56:50Z</date>
     <groups>
         <group>
             <name>Cloudstack Management</name>
@@ -527,12 +527,12 @@
                     <logtimefmt/>
                 </item>
                 <item>
-                    <name>CloudStack SSvm storage issue alert</name>
+                    <name>CloudStack System VM storage issue alert</name>
                     <type>2</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>cs_cluster.ssvm_storage_issue_alert</key>
+                    <key>cs_cluster.system_vm_storage_issue_alert</key>
                     <delay>0</delay>
                     <history>7</history>
                     <trends>365</trends>
@@ -895,6 +895,49 @@
     </templates>
     <triggers>
         <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Console proxy creation failure. zone:,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Console Proxy VM Creation Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
             <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Console Proxy VM Restart Fail</name>
             <url/>
@@ -942,8 +985,38 @@
             </dependencies>
         </trigger>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Console proxy startup failure,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Console Proxy VM Startup Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1 or {Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Console proxy down in zone,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Console Proxy VM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.system_vm_storage_issue_alert.str(Console proxy storage issue,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Console Proxy VM Storage Issue</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.domain_router_state_alert.str(failed while starting virtual router,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Domain Router(VR) Startup Fail</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -999,7 +1072,7 @@
             </dependencies>
         </trigger>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <expression>{Template CloudStack Management:cs_cluster.domain_router_state_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Domain Router VM Stop Unexpectedly</name>
             <url/>
             <status>0</status>
@@ -1009,51 +1082,24 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
-            <name>Cloudstack Domain SSVM Restart Fail</name>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Failed to open console proxy firewall port,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Fail To Open Console Proxy Firewall Port on VM</name>
             <url/>
             <status>0</status>
-            <priority>4</priority>
+            <priority>3</priority>
             <description/>
             <type>0</type>
-            <dependencies>
-                <dependency>
-                    <name>Cloudstack Management Service Stop by Admin</name>
-                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Percentage Available Memory</name>
-                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Percentage Available CPU</name>
-                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Remaining Storage</name>
-                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Percentage Available Storage</name>
-                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Unallocated Private IPs</name>
-                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
-                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
-                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
-                </dependency>
-                <dependency>
-                    <name>Cloudstack Low Unallocated Vlan</name>
-                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
-                </dependency>
-            </dependencies>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Failed to open secondary storage vm firewall port,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Fail To Open Secondary Storage Firewall Port on VM</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
         </trigger>
         <trigger>
             <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
@@ -1156,6 +1202,16 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.domain_router_state_alert.str(Monitoring Service on VR,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Monitor Service Alert On VR</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template CloudStack Management:cs_cluster.usage_server_status.nodata({$CS_TRAP_ALERT_INT})}=0 and {Template CloudStack Management:cs_cluster.usage_server_status.str(No usage server)}=1</expression>
             <name>Cloudstack No usage server process running</name>
             <url/>
@@ -1166,8 +1222,118 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1</expression>
-            <name>Cloudstack SSVM Stop Unexpectedly</name>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1 or {Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm is down,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm creation failure,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage VM Creation Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage VM Restart Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Management Service Stop by Admin</name>
+                    <expression>{Template CloudStack Management:cs_cluster.managment_node_status.str(is down)}=1</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm startup failure,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage VM Startup Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.system_vm_storage_issue_alert.str(Secondary Storage Vm storage issue,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage VM Storage Issue</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
@@ -1183,7 +1349,40 @@
             <priority>1</priority>
             <description/>
             <type>0</type>
-            <dependencies/>
+            <dependencies>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Memory</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_memory_alert.str(Memory)}=1 and {Template CloudStack Management:cs_cluster.available_memory_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available CPU</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_cpu_alert.str(CPU)}=1 and {Template CloudStack Management:cs_cluster.available_cpu_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Remaining Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.remaining.storage_alert.str(Remaining unallocated Storage)}=1 and {Template CloudStack Management:cs_cluster.remaining.storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Percentage Available Storage</name>
+                    <expression>{Template CloudStack Management:cs_cluster.available_storage_alert.str(Available Storage)}=1 and {Template CloudStack Management:cs_cluster.available_storage_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Private IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.private_ip_alert.str(unallocated private IPs)}=1 and {Template CloudStack Management:cs_cluster.private_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Virtual Public IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.str(unallocated virtual network public)}=1 and {Template CloudStack Management:cs_cluster.virtual_network_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Shared Network IPs</name>
+                    <expression>{Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.str(unallocated shared network IPs)}=1 and {Template CloudStack Management:cs_cluster.direct_attached_public_ip_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+                </dependency>
+                <dependency>
+                    <name>Cloudstack Low Unallocated Vlan</name>
+                    <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
+                </dependency>
+            </dependencies>
         </trigger>
         <trigger>
             <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
