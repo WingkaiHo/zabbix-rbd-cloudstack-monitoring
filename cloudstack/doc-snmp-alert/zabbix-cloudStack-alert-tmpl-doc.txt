@@ -2,7 +2,7 @@
 
    资源容量报警AlertManager.java模块检测和发送，检测间隔30s, 如果检测项目有报警持续发送，如果报警以后30s没有收到报警代表此状态恢复正常。
 
-1. availableMemory
+1. availableMemory 
    Msg: Low Available Memory in cluster...
    Zabbix item: CloudStack avaiable memory alert [cs_cluster.available_memory_alert]
    Zabbix trigger: Cloudstack Low Percentage Available Memory
@@ -47,9 +47,9 @@
    Zabbix item: CloudStack avaiable secondary storage alert [cs_cluster.available_secondary_storage_alert]
    Zabbix trigger: Cloudstack Low Percentage Available Secondary Storage
 
-二. 用户VM 异常关闭报警事件(userVmState) 
+二. 用户VM 异常报警事件(userVmState) 
     用户VM 创建报警在UserVmManagerImpl.java检测，调用AlertManager发送的
-    用户VM 异常关闭报警HighAvailabilityManagerImpl.java检测
+    用户VM 异常关闭报警HighAvailabilityManagerImpl.java检测 [扫描/重试间隔_restartRetryInterval/restart.retry.interval]
 
 1. 用户虚拟状态保存
    Zabbix item: CloudStack user VM state alert [cs_cluster.user_vm_state_alert]
@@ -60,31 +60,135 @@
    Msg: Failed to deploy Vm with...
    Zabbix trigger: Cloudstack User VM Creation Fail
 
-2) 检测Dedication事件不属于警告时间不处理 [checkHostsDedication]
+2) 检测Dedication事件不属于警告时间不处理 [UserVmManagerImpl.checkHostsDedication]
 
 3) 用户VM异常关闭 [处理函数 HighAvailabilityManagerImpl.scheduleRestart]
    Msg: ......stopped unexpectedly on host.......
    Zabbix trigger: Cloudstack User VM Stop Unexpectedly
 
-4) 用户VM重启失败
+4) 用户VM重启失败 [处理函数:HighAvailabilityManagerImpl.restart]
    Msg: Unable to restart 
+   Zabbix trigger: Cloudstack User VM Restart Fail 
 
    原因: InsufficientCapacityException, ResourceUnavailableException, ConcurrentOperationException, OperationTimedoutException
    依赖触发器: 资源容量报警事件
 
-三. Domain Router异常关闭事件
-    Domain Router VM 异常关闭报警HighAvailabilityManagerImpl.java检测
-    
+三. Domain Router异常报警事件
+    Domain Router VM
+异常关闭报警HighAvailabilityManagerImpl.java检测/重试间隔restart.retry.interval
+    Dommain Router VM Connection update VirtualNetworkApplianceManagerImpl.java [扫描间隔_routerCheckInterval 30s]
 
 1. 用户虚拟状态保存
    Zabbix item: CloudStack Domain Router VM state alert [cs_cluster.domain_router_vm_state_alert]
 
-3) Domain Router VM异常关闭 [处理函数 HighAvailabilityManagerImpl.scheduleRestart]
+2. Domain Router 状态告警事件
+
+1) Vpn Connection 切换 [处理函数: VirtualNetworkApplianceManagerImpl.updateSite2SiteVpnConnectionState] 不需要报警
+   Msg: Site-to-site Vpn Connection to ...... just switch from ..... to
+
+2）Router Switch 切换 [处理函数： VirtualNetworkApplianceManagerImpl.updateRoutersRedundantState ] 不需报警
+   Msg: Redundant virtual router ...... just switch from .... to 
+
+3) 超过1个Router是Master 状态 [处理函数: VirtualNetworkApplianceManagerImpl.checkDuplicateMaster] 不需报警 
+   Msg： More than one redundant virtual router is in MASTER state! Router......
+
+4) VR监控报错信息 [VirtualNetworkApplianceManagerImpl.getRouterAlerts] 
+   Msg：Monitoring Service on VR
+   Zabbix trigger: Monitoring Service Alert on VR 
+
+5) 启动VR失败
+   Msg: Command: (cmdclassname) failed while starting virtual router
+   Zabbix trigger: Cloudstack Domain Router(VR) Startup Fail
+
+6) Handle Single Working Redundant Router [处理函数: VirtualNetworkApplianceManagerImpl.handleSingleWorkingRedundantRouter] 不需要报警
+   Msg :Virtual route ... + would be stopped after connecting back, due to + reason
+        Can't bump up virtual router s priority due to it's already bumped up!
+
+7) Domain Router VM异常关闭 [处理函数 HighAvailabilityManagerImpl.scheduleRestart]
    Msg: ......stopped unexpectedly on host.......
    Zabbix trigger: Cloudstack Domain Router VM Stop Unexpectedly
 
-4) Domain Router重启失败
+8) Domain Router重启失败 [处理函数:HighAvailabilityManagerImpl.restart]
    Msg: Unable to restart 
+   Zabbix trigger: Cloudstack Domain Router VM Restart Fail
 
    原因: InsufficientCapacityException, ResourceUnavailableException, ConcurrentOperationException, OperationTimedoutException
    依赖触发器: 资源容量报警事件
+
+四. CONSOLE PROXY VM 异常状态
+    CONSOLE PROXY VM 异常报警检测 ConsoleProxyAlertAdapter.java(扫描间隔DEFAULT_CAPACITY_SCAN_INTERVA 30s)，HighAvailabilityManagerImpl.java检测/重试间隔 _restartRetryInterval/restart.retry.interval
+
+1.  CONSOLE PROXY VM状态保存
+	Zabbix item: CloudStack console proxy state alert [cs_cluster.console_proxy_state_alert]
+
+2. CONSOLE PROXY告警事件
+1) CONSOLE PROXY VM创建失败 [处理函数: ConsoleProxyAlertAdapter.onProxyAlert]
+   Msg: Console proxy creation failure....
+   Zabbix trigger: Cloudstack Console Proxy VM Creation Fail
+
+2) CONSOLE PROXY 启动失败 [处理函数: ConsoleProxyAlertAdapter.onProxyAlert]
+   Msg: Console proxy startup failure....
+   Zabbix trigger: Cloudstack Console Proxy VM Startup Fail 
+
+3) CONSOLE PROXY VM异常关闭 [处理函数 HighAvailabilityManagerImpl.scheduleRestart / ConsoleProxyAlertAdapter.onProxyAlert]
+   Msg: ......stopped unexpectedly on host....... 或者 Console proxy down in zone........
+   Zabbix trigger: Cloudstack Console Proxy VM Stop Unexpectedly
+
+4) CONSOLE PROXY VM重启失败 [处理函数:HighAvailabilityManagerImpl.restart]
+   Msg: Unable to restart 
+   Zabbix trigger: Cloudstack Console Proxy VM Restart Fail
+
+5) CONSOLE PROXY VM console proxy 端口无法打开 [处理函数: ConsoleProxyAlertAdapter.onProxyAlert]
+   Msg: Failed to open console proxy firewall port....
+   Zabbix trigger: Cloudstack Fail To Open Console Proxy Firewall Port on VM
+ 
+   原因: InsufficientCapacityException, ResourceUnavailableException, ConcurrentOperationException, OperationTimedoutException
+   依赖触发器: 资源容量报警事件
+
+五. Secondary Storage VM 异常报警
+
+    Secondary Storage VM 异常报警检测 SecondaryStorageVmAlertAdapter.java(扫描间隔DEFAULT_CAPACITY_SCAN_INTERVA 30s)，HighAvailabilityManagerImpl.java检测/重试间隔 _restartRetryInterval/restart.retry.interval
+
+1.  Secondary Storage VM状态保存
+	Zabbix item: CloudStack SSvm stop alert [cs_cluster.ssvm_stop_alert]
+
+2. Secondary Storage VM告警事件
+1) Secondary Storage VM创建失败 [处理函数: SecondaryStorageVmAlertAdapter.onSSVMAlert]
+   Msg: Secondary Storage Vm creation failure......
+   Zabbix trigger: Cloudstack Secondary Storage VM Creation Fail
+
+2) Secondary Storage VM启动失败 [处理函数: SecondaryStorageVmAlertAdapter.onSSVMAlert]
+   Msg: Secondary Storage Vm startup failure
+   Zabbix trigger: Cloudstack Secondary Storage VM Startup Fail 
+
+3) Secondary Storage VM异常关闭 [处理函数 HighAvailabilityManagerImpl.scheduleRestart / SecondaryStorageVmAlertAdapter.onSSVMAlert]
+   Msg: ......stopped unexpectedly on host....... 或者 Secondary Storage Vm is down........
+   Zabbix trigger: Cloudstack Secondary Storage VM Stop Unexpectedly
+
+4) Secondary Storage VM重启失败 [处理函数:HighAvailabilityManagerImpl.restart]
+   Msg: Unable to restart...... 
+   Zabbix trigger: Cloudstack Secondary Storage VM Restart Fail
+
+5) Secondary Storage VM console proxy 端口无法打开 [处理函数: ConsoleProxyAlertAdapter.onProxyAlert]
+   Msg: Failed to open secondary storage vm firewall port....
+   Zabbix trigger: Cloudstack Fail To Open Secondary Storage Firewall Port on VM
+ 
+   原因: InsufficientCapacityException, ResourceUnavailableException, ConcurrentOperationException, OperationTimedoutException
+   依赖触发器: 资源容量报警事件
+
+六. 系统虚拟机存储报警
+    CONSOLE PROXY VM 存储异常报警检测 ConsoleProxyAlertAdapter.java(扫描间隔DEFAULT_CAPACITY_SCAN_INTERVA 30s)
+    Second Storage VM 存储异常报警
+    
+1. 存储报警状态保存
+   Zabbix item: CloudStack System VM storage issue alert
+
+2. 存储报警事件
+
+1） CONSOLE PROXY VM存储报警 [处理函数:ConsoleProxyAlertAdapter.onProxyAlert]
+    Msg: Console proxy storage issue.....
+    Zabbix trigger: Cloudstack Console Proxy Storage Issue
+
+2） Secondary Storage VM存储报警[处理函数:SecondaryStorageVmAlertAdapter.onSSVMAlert]
+    Msg: Secondary Storage Vm storage issue...
+    Zabbix trigger: Cloudstack Secondary Storage VM Storage Issue
