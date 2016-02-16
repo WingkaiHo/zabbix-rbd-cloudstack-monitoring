@@ -97,6 +97,14 @@
 
 3) 把当前目录的ClusterManagerImpl.java ClusterAlertAdapter.java替换，然后编译.替换包cloud-framework-cluster-4.5.1.jar， cloud-server-4.5.1.jar
 
-4) 修改 server/src/com/cloud/network/router/VirtualNetworkApplianceManagerImpl.java的getRouterAlerts函数
+
+##6. 其他修改
+1) 修改 server/src/com/cloud/network/router/VirtualNetworkApplianceManagerImpl.java的getRouterAlerts函数
 
    1471 修改后 _alertMgr.sendAlert(AlertType.ALERT_TYPE_DOMAIN_ROUTER, router.getDataCenterId(), router.getPodIdToDeployIn(), "Monitoring Service on VR " + router.getInstanceName() + alert, alert); 把alert信息打印到title上否则snmptrap无法收到alert信息
+
+2) 修改 usage/src/com/cloud/usage/UsageManagerImpl.java SanityCheck类runInContext
+1852 _alertMgr.sendAlert(AlertManager.AlertType.ALERT_TYPE_USAGE_SANITY_RESULT, 0, new Long(0), "Usage Sanity Check failed", errors);
+   修改为
+   _alertMgr.sendAlert(AlertManager.AlertType.ALERT_TYPE_USAGE_SANITY_RESULT, 0, new Long(0), "Usage Sanity Check failed"+errors, errors);
+
