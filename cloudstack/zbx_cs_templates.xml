@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2016-02-15T09:56:50Z</date>
+    <date>2016-02-17T01:18:43Z</date>
     <groups>
         <group>
             <name>Cloudstack Management</name>
@@ -895,7 +895,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Console proxy creation failure. zone:,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Console proxy creation failure,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Console Proxy VM Creation Fail</name>
             <url/>
             <status>0</status>
@@ -936,6 +936,16 @@
                     <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
                 </dependency>
             </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.console_proxy_migrate_alert.str(Unable to migrate vm)}=1 and {Template CloudStack Management:cs_cluster.console_proxy_migrate_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>CloudStack Console Proxy VM Migrate Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
         </trigger>
         <trigger>
             <expression>{Template CloudStack Management:cs_cluster.console_proxy_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
@@ -1015,11 +1025,31 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.update_resource_count_alert.str(Failed to decrement resource count,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Decrement Resource Count Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template CloudStack Management:cs_cluster.domain_router_state_alert.str(failed while starting virtual router,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Domain Router(VR) Startup Fail</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.domain_router_migrate_alert.str(Unable to migrate vm)}=1 and {Template CloudStack Management:cs_cluster.domain_router_migrate_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>CloudStack Domain Router(VR) VM Migrate Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
@@ -1222,16 +1252,6 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1 or {Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm is down,{$CS_CAPACITY_CHECK_INT})}=1</expression>
-            <name>Cloudstack Secondary Storage Stop Unexpectedly</name>
-            <url/>
-            <status>0</status>
-            <priority>3</priority>
-            <description/>
-            <type>0</type>
-            <dependencies/>
-        </trigger>
-        <trigger>
             <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm creation failure,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Secondary Storage VM Creation Fail</name>
             <url/>
@@ -1332,11 +1352,51 @@
             <dependencies/>
         </trigger>
         <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(stopped unexpectedly,{$CS_CAPACITY_CHECK_INT})}=1 or {Template CloudStack Management:cs_cluster.ssvm_stop_alert.str(Secondary Storage Vm is down,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Secondary Storage VM Stop Unexpectedly</name>
+            <url/>
+            <status>0</status>
+            <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>{Template CloudStack Management:cs_cluster.system_vm_storage_issue_alert.str(Secondary Storage Vm storage issue,{$CS_CAPACITY_CHECK_INT})}=1</expression>
             <name>Cloudstack Secondary Storage VM Storage Issue</name>
             <url/>
             <status>0</status>
             <priority>3</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.update_resource_count_alert.str(Failed to decrement resource count,{$CS_CAPACITY_CHECK_INT})}=1</expression>
+            <name>Cloudstack Snapshot Resource Limit Exceeded</name>
+            <url/>
+            <status>0</status>
+            <priority>1</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.usage_sanity_result_alert.str(Usage Sanity Check failed)}=1 and {Template CloudStack Management:cs_cluster.usage_sanity_result_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Usage Sanity Check failed</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.usage_server_result_alert.str(Usage job failed)}=1 and {Template CloudStack Management:cs_cluster.usage_server_result_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>Cloudstack Usage Server Job Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
             <description/>
             <type>0</type>
             <dependencies/>
@@ -1383,6 +1443,16 @@
                     <expression>{Template CloudStack Management:cs_cluster.vlan_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0 and {Template CloudStack Management:cs_cluster.vlan_alert.str(unallocated VLANs)}=1</expression>
                 </dependency>
             </dependencies>
+        </trigger>
+        <trigger>
+            <expression>{Template CloudStack Management:cs_cluster.user_vm_migrate_alert.str(Unable to migrate vm)}=1 and {Template CloudStack Management:cs_cluster.user_vm_migrate_alert.nodata({$CS_CAPACITY_CHECK_INT})}=0</expression>
+            <name>CloudStack User VM Migrate Fail</name>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
         </trigger>
         <trigger>
             <expression>{Template CloudStack Management:cs_cluster.user_vm_state_alert.str(Unable to restart,{$CS_CAPACITY_CHECK_INT})}=1</expression>
