@@ -197,16 +197,16 @@
 
 七. Usage Server 状态报警
     
-1. 检测usage server 当前状态,检测间隔10分钟一次HighAvailabilityManagerExtImpl.java 的UsageServerMonitorTask负责检测
+   检测usage server 当前状态,检测间隔10分钟一次HighAvailabilityManagerExtImpl.java 的UsageServerMonitorTask负责检测
    Zabbix item： CloudStack usage server status
 
    cloudstack 可以通过enable.usage.server启动/禁用 usage server检测线程.
 
-2. Usage server sanity 检测间隔由usage.sanity.check.interval配置, UsageManagerImpl.SanityCheck.runInContext函数负责检测
+1. Usage server sanity 检测间隔由usage.sanity.check.interval配置, UsageManagerImpl.SanityCheck.runInContext函数负责检测
    zabbix item:	CloudStack usage sanity result alert
 
-3. Usage server job fail 检测间隔  UsageManagerImpl.parse
-   zabbix item
+2. Usage server job fail 由UsageManagerImpl.parse
+   zabbix item：CloudStack
 
 4. 报警事件
 1) No usage server process running[处理函数:HighAvailabilityManagerExtImpl.UsageServerMonitorTask]
@@ -250,11 +250,34 @@
 
 2. 事件报警
 1) 减少资源总量失败
-   Msg: Failed to decrement resource count of type
+   Msg: Failed to decrement resource count of type [处理函数 ResourceLimitManagerImpl.decrementResourceCount]
    Zabbix trigger: Cloudstack Decrement Resource Count Fail
 
-2) 快照数量超出限制
+2) 快照数量超出限制 [处理函数 SnapshotManagerImpl.allocSnapshot]
    Msg: Snapshot resource limit exceeded for account id...
    Zabbix Cloudstack Snapshot Resource Limit Exceeded
 
-十：
+十. 资源数量超出限制错误
+
+1. 资源数量超出限制错误由ResourceLimitManagerImpl.checkResourceLimit 进行判断检测
+   TemplateServiceImpl.handleTemplateSync 和 VolumeServiceImpl.handleVolumeSync 两处地方报这个报警，其他地方都不发送报警.
+   Zabbit item: CloudStack resource limit exceeded alert
+
+2. 事件报警
+1) 模板/磁盘数据个数超出限制
+   Msg: Maximum number of resources of type
+   Zabbix trigger: Cloudstack Template or Volume Resource Limit Exceeded
+
+十一.虚拟机状态同步报警
+
+   对于VM对应host的网络断开，cloudstack manager无法对虚拟机状态控制和更新 处理函数是VirtualMachineManagerImpl.scanStalledVMInTransitionStateOnDisconnectedHosts
+
+   
+1. 虚拟机状态同步报警
+   Zabbix item: CloudStack VM state sync Alert [cs_cluster.vm_sync_state_alert]
+
+2. 报警事件
+
+1）无法同步VM状态
+   Msg: VM ... is stuck in ... state and its host is unreachable for too long
+   Zabbit trigger: Cloudstack Stalled VM On Disconnected Hosts
