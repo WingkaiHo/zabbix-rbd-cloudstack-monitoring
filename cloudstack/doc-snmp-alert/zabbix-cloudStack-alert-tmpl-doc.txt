@@ -70,7 +70,7 @@
 
 4) 用户VM重启失败 [处理函数:HighAvailabilityManagerImpl.restart]
    Msg: Unable to restart 
-   Zabbix trigger: Cloudstack User VM Restart Fail 
+   Zabbix trigger: Cloudstack User VM Restart Fail
 
    原因: InsufficientCapacityException, ResourceUnavailableException, ConcurrentOperationException, OperationTimedoutException
    依赖触发器: 资源容量报警事件
@@ -183,7 +183,7 @@
     Second Storage VM 存储异常报警
     
 1. 存储报警状态保存
-   Zabbix item: CloudStack System VM storage issue alert
+   Zabbix item: CloudStack System VM storage issue alert [cs_cluster.system_vm_storage_issue_alert]
 
 2. 存储报警事件
 
@@ -198,7 +198,7 @@
 七. Usage Server 状态报警
     
    检测usage server 当前状态,检测间隔10分钟一次HighAvailabilityManagerExtImpl.java 的UsageServerMonitorTask负责检测
-   Zabbix item： CloudStack usage server status
+   Zabbix item： CloudStack usage server status [cs_cluster.usage_server_status]
 
    cloudstack 可以通过enable.usage.server启动/禁用 usage server检测线程.
 
@@ -211,7 +211,7 @@
 4. 报警事件
 1) No usage server process running[处理函数:HighAvailabilityManagerExtImpl.UsageServerMonitorTask]
    Msg: No usage server....
-   Zabbix trigger: Cloudstack No usage server process running
+   Zabbix trigger: Cloudstack No usage server process running 
 
 2) Usage job 失败 [UsageManagerImpl.parse]
    Msg: Usage job failed.
