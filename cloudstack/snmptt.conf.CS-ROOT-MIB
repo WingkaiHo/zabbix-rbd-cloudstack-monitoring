@@ -1,0 +1,412 @@
+#
+#
+#
+#
+MIB: CS-ROOT-MIB (file:./CS-ROOT-MIB.mib) converted on Fri Feb 19 04:24:46 2016 using snmpttconvertmib v1.4beta2
+#
+#
+#
+EVENT availableMemory .1.3.6.1.4.1.18060.15.1.2.0.1 "Status Events" Normal
+FORMAT Available Memory below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_memory_alert" -o "$5 $4"
+SDESC
+Available Memory below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT availableCpu .1.3.6.1.4.1.18060.15.1.2.0.2 "Status Events" Normal
+FORMAT Unallocated CPU below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_cpu_alert" -o "$5 $4"
+SDESC
+Unallocated CPU below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT availableStorage .1.3.6.1.4.1.18060.15.1.2.0.3 "Status Events" Normal
+FORMAT Available Storage below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_storage_alert" -o "$5 $4"
+SDESC
+Available Storage below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT remainingStorageAllocated .1.3.6.1.4.1.18060.15.1.2.0.4 "Status Events" Normal
+FORMAT Remaining unallocated Storage is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.remaining.storage_alert" -o "$5 $4"
+SDESC
+Remaining unallocated Storage is below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT unallocatedVirtualNetworkpublicIp .1.3.6.1.4.1.18060.15.1.2.0.5 "Status Events" Normal
+FORMAT Number of unallocated virtual network public IPs is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.virtual_network_public_ip_alert" -o "$5 $4"
+SDESC
+Number of unallocated virtual network public IPs is below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT unallocatedPrivateIp .1.3.6.1.4.1.18060.15.1.2.0.6 "Status Events" Normal
+FORMAT Number of unallocated private IPs is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.private_ip_alert" -o "$5 $4"
+SDESC
+Number of unallocated private IPs is below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT availableSecondaryStorage .1.3.6.1.4.1.18060.15.1.2.0.7 "Status Events" Normal
+FORMAT Available Secondary Storage in availability zone is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_secondary_storage_alert" -o "$5 $4"
+SDESC
+Available Secondary Storage in availability zone is below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT host .1.3.6.1.4.1.18060.15.1.2.0.8 "Status Events" Normal
+FORMAT host related alerts like host disconnected etc Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+host related alerts like host disconnected etc
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT userVmState .1.3.6.1.4.1.18060.15.1.2.0.9 "Status Events" Normal
+FORMAT User VM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.user_vm_state_alert" -o "$5 $4"
+SDESC
+User VM stopped unexpectedly
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT domainRouterVmState .1.3.6.1.4.1.18060.15.1.2.0.10 "Status Events" Normal
+FORMAT Domain Router VM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.domain_router_vm_state_alert" -o "$5 $4"
+SDESC
+Domain Router VM stopped unexpectedly
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT consoleProxyVmState .1.3.6.1.4.1.18060.15.1.2.0.11 "Status Events" Normal
+FORMAT Console Proxy VM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_memory_alert" -o "$5 $4"
+SDESC
+Console Proxy VM stopped unexpectedly
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT routingConnection .1.3.6.1.4.1.18060.15.1.2.0.12 "Status Events" Normal
+FORMAT lost connection to default route (to the gateway) Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+lost connection to default route (to the gateway)
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT storageIssueSystemVms .1.3.6.1.4.1.18060.15.1.2.0.13 "Status Events" Normal
+FORMAT storage issue in system VMs Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.system_vm_storage_issue_alert" -o "$5 $4"
+SDESC
+storage issue in system VMs
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT usageServerStatus .1.3.6.1.4.1.18060.15.1.2.0.14 "Status Events" Normal
+FORMAT No usage server process running Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.usage_server_status" -o "$5 $4"
+SDESC
+No usage server process running
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT managmentNode .1.3.6.1.4.1.18060.15.1.2.0.15 "Status Events" Normal
+FORMAT Management network CIDR is not configured originally Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.managment_node_status" -o "$5 $4"
+SDESC
+Management network CIDR is not configured originally
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT domainRouterMigrate .1.3.6.1.4.1.18060.15.1.2.0.16 "Status Events" Normal
+FORMAT Domain Router VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.domain_router_migrate_alert" -o "$5 $4"
+SDESC
+Domain Router VM Migration was unsuccessful
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT consoleProxyMigrate .1.3.6.1.4.1.18060.15.1.2.0.17 "Status Events" Normal
+FORMAT  Console Proxy VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+ Console Proxy VM Migration was unsuccessful
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT userVmMigrate .1.3.6.1.4.1.18060.15.1.2.0.18 "Status Events" Normal
+FORMAT User  VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+User  VM Migration was unsuccessful
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT unallocatedVlan .1.3.6.1.4.1.18060.15.1.2.0.19 "Status Events" Normal
+FORMAT Number of unallocated VLANs is below configured threshold in availability zone Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.vlan_alert" -o "$5 $4"
+SDESC
+Number of unallocated VLANs is below configured threshold in availability zone
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT ssvmStopped .1.3.6.1.4.1.18060.15.1.2.0.20 "Status Events" Normal
+FORMAT SSVM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+SSVM stopped unexpectedly
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT usageServerResult .1.3.6.1.4.1.18060.15.1.2.0.21 "Status Events" Normal
+FORMAT Usage job failed Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Usage job failed
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT storageDelete .1.3.6.1.4.1.18060.15.1.2.0.22 "Status Events" Normal
+FORMAT Failed to Delete storage pool Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Failed to Delete storage pool
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT updateResourceCount .1.3.6.1.4.1.18060.15.1.2.0.23 "Status Events" Normal
+FORMAT  Failed to update the resource count Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+ Failed to update the resource count
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT usageSanityResult .1.3.6.1.4.1.18060.15.1.2.0.24 "Status Events" Normal
+FORMAT Usage Sanity Check failed Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Usage Sanity Check failed
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT unallocatedDirectAttachedPublicIp .1.3.6.1.4.1.18060.15.1.2.0.25 "Status Events" Normal
+FORMAT Number of unallocated shared network IPs is low in availability zone Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Number of unallocated shared network IPs is low in availability zone
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT unallocatedLocalStorage .1.3.6.1.4.1.18060.15.1.2.0.26 "Status Events" Normal
+FORMAT Remaining unallocated Local Storage is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Remaining unallocated Local Storage is below configured threshold
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT resourceLimitExceeded .1.3.6.1.4.1.18060.15.1.2.0.27 "Status Events" Normal
+FORMAT Resource limit exceeds the limit Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Resource limit exceeds the limit
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
+#
+#
+#
+EVENT sync .1.3.6.1.4.1.18060.15.1.2.0.28 "Status Events" Normal
+FORMAT Out of context risky state transitions of VM Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+SDESC
+Out of context risky state transitions of VM
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC
