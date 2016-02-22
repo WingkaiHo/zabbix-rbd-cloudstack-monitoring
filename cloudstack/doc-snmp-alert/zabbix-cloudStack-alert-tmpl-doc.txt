@@ -20,7 +20,7 @@
 
 4. remainingStorageAllocated
    Msg: Remaining unallocated Storage is low in cluster
-   Zabbix item: CloudStack remaining storage alert [cs_cluster.remaining.storage_alert] 
+   Zabbix item: CloudStack remaining storage alert [cs_cluster.remaining_storage_alert] 
    Zabbix trigger: Cloudstack Low Remaining Storage 
 
 5. unallocatedPrivateIp
@@ -225,9 +225,9 @@
 
 1. 用户，Domain Router， ConsoleProxy VM 迁移都 VirtualMachineManagerImpl类 migrate负载
 
-   Zabbix item： CloudStack domain router migrate alert / 
-                 CloudStack console proxy migrate alert /
-                 CloudStack user VM migrate alert /
+   Zabbix item： CloudStack domain router migrate alert [cs_cluster.domain_router_migrate_alert]
+                 CloudStack console proxy migrate alert [cs_cluster.console_proxy_migrate_alert]
+                 CloudStack user VM migrate alert [cs_cluster.user_vm_migrate_alert]
 
 2. 事件报警
 1) 用户虚拟机迁移失败
@@ -281,3 +281,13 @@
 1）无法同步VM状态
    Msg: VM ... is stuck in ... state and its host is unreachable for too long
    Zabbit trigger: Cloudstack Stalled VM On Disconnected Hosts
+
+十二.Cloudstack management Status
+
+1. Cloudstack management 服务正常启动或者关闭发送状态信息。
+
+2. 告警事件
+1) Cloudstack management 服务被管理员关闭
+   Msg:  Management server node $ip is down [处理函数: ClusterAlertAdapte.onClusterNodeLeft] 服务正常关闭以后发送.
+         Management server node $ip is up [处理函数: ClusterAlertAdapte.onClusterNodeJoined] 服务正常开启，模块加载完成以后发送.
+   Zabbix trigger: Cloudstack Management Service Stop by Admin 
