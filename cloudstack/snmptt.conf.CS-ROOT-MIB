@@ -53,7 +53,7 @@ EDESC
 #
 EVENT remainingStorageAllocated .1.3.6.1.4.1.18060.15.1.2.0.4 "Status Events" Normal
 FORMAT Remaining unallocated Storage is below configured threshold Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
-EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.remaining.storage_alert" -o "$5 $4"
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.remaining_storage_alert" -o "$5 $4"
 SDESC
 Remaining unallocated Storage is below configured threshold
 Variables:
@@ -157,7 +157,7 @@ EDESC
 #
 EVENT consoleProxyVmState .1.3.6.1.4.1.18060.15.1.2.0.11 "Status Events" Normal
 FORMAT Console Proxy VM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
-EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.available_memory_alert" -o "$5 $4"
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.console_proxy_vm_state_alert" -o "$5 $4"
 SDESC
 Console Proxy VM stopped unexpectedly
 Variables:
@@ -231,7 +231,7 @@ EDESC
 #
 EVENT domainRouterMigrate .1.3.6.1.4.1.18060.15.1.2.0.16 "Status Events" Normal
 FORMAT Domain Router VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
-EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.domain_router_migrate_alert" -o "$5 $4"
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.domain_router_vm_migrate_alert" -o "$5 $4"
 SDESC
 Domain Router VM Migration was unsuccessful
 Variables:
@@ -246,6 +246,7 @@ EDESC
 #
 EVENT consoleProxyMigrate .1.3.6.1.4.1.18060.15.1.2.0.17 "Status Events" Normal
 FORMAT  Console Proxy VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.console_proxy_vm_migrate_alert" -o "$5 $4"
 SDESC
  Console Proxy VM Migration was unsuccessful
 Variables:
@@ -260,6 +261,7 @@ EDESC
 #
 EVENT userVmMigrate .1.3.6.1.4.1.18060.15.1.2.0.18 "Status Events" Normal
 FORMAT User  VM Migration was unsuccessful Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.user_vm_migrate_alert" -o "$5 $4"
 SDESC
 User  VM Migration was unsuccessful
 Variables:
@@ -289,6 +291,7 @@ EDESC
 #
 EVENT ssvmStopped .1.3.6.1.4.1.18060.15.1.2.0.20 "Status Events" Normal
 FORMAT SSVM stopped unexpectedly Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.ssvm_stop_alert" -o "$5 $4"
 SDESC
 SSVM stopped unexpectedly
 Variables:
@@ -303,6 +306,7 @@ EDESC
 #
 EVENT usageServerResult .1.3.6.1.4.1.18060.15.1.2.0.21 "Status Events" Normal
 FORMAT Usage job failed Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.usage_server_result_alert" -o "$5 $4"
 SDESC
 Usage job failed
 Variables:
@@ -314,7 +318,7 @@ Variables:
 EDESC
 #
 #
-#
+# 代码暂时没有相关报警
 EVENT storageDelete .1.3.6.1.4.1.18060.15.1.2.0.22 "Status Events" Normal
 FORMAT Failed to Delete storage pool Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
 SDESC
@@ -331,6 +335,7 @@ EDESC
 #
 EVENT updateResourceCount .1.3.6.1.4.1.18060.15.1.2.0.23 "Status Events" Normal
 FORMAT  Failed to update the resource count Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.update_resource_count_alert" -o "$5 $4"
 SDESC
  Failed to update the resource count
 Variables:
@@ -345,6 +350,7 @@ EDESC
 #
 EVENT usageSanityResult .1.3.6.1.4.1.18060.15.1.2.0.24 "Status Events" Normal
 FORMAT Usage Sanity Check failed Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.usage_sanity_result_alert" -o "$5 $4"
 SDESC
 Usage Sanity Check failed
 Variables:
@@ -359,6 +365,7 @@ EDESC
 #
 EVENT unallocatedDirectAttachedPublicIp .1.3.6.1.4.1.18060.15.1.2.0.25 "Status Events" Normal
 FORMAT Number of unallocated shared network IPs is low in availability zone Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.direct_attached_public_ip_alert" -o "$5 $4"
 SDESC
 Number of unallocated shared network IPs is low in availability zone
 Variables:
@@ -387,6 +394,7 @@ EDESC
 #
 EVENT resourceLimitExceeded .1.3.6.1.4.1.18060.15.1.2.0.27 "Status Events" Normal
 FORMAT Resource limit exceeds the limit Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.resource_limit_exceeded_alert" -o "$5 $4"
 SDESC
 Resource limit exceeds the limit
 Variables:
@@ -401,6 +409,7 @@ EDESC
 #
 EVENT sync .1.3.6.1.4.1.18060.15.1.2.0.28 "Status Events" Normal
 FORMAT Out of context risky state transitions of VM Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.vm_sync_state_alert" -o "$5 $4"
 SDESC
 Out of context risky state transitions of VM
 Variables:
