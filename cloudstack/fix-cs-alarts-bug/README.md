@@ -102,9 +102,20 @@
 1) 修改 server/src/com/cloud/network/router/VirtualNetworkApplianceManagerImpl.java的getRouterAlerts函数
 
    1471 修改后 _alertMgr.sendAlert(AlertType.ALERT_TYPE_DOMAIN_ROUTER, router.getDataCenterId(), router.getPodIdToDeployIn(), "Monitoring Service on VR " + router.getInstanceName() + alert, alert); 把alert信息打印到title上否则snmptrap无法收到alert信息
+   修改后重新编译cloud-server-4.5.1.jar 
 
 2) 修改 usage/src/com/cloud/usage/UsageManagerImpl.java SanityCheck类runInContext
 1852 _alertMgr.sendAlert(AlertManager.AlertType.ALERT_TYPE_USAGE_SANITY_RESULT, 0, new Long(0), "Usage Sanity Check failed", errors);
    修改为
    _alertMgr.sendAlert(AlertManager.AlertType.ALERT_TYPE_USAGE_SANITY_RESULT, 0, new Long(0), "Usage Sanity Check failed"+errors, errors);
+   修改后重新编译cloud-usage-4.5.1.jar
 
+## 需要更新jar包统计
+   cloud-plugin-snmp-alerts-4.5.1.jar
+   cloud-framework-cluster-4.5.1.jar, 
+   cloud-framework-spring-lifecycle-4.5.1.jar, 
+   cloud-framework-spring-module-4.5.1.jar
+   cloud-framework-cluster-4.5.1.jar
+   cloud-utils-4.5.1.jar, 
+   cloud-server-4.5.1.jar,
+   cloud-usage-4.5.1.jar
