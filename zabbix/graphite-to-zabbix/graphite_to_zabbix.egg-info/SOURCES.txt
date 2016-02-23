@@ -1,0 +1,7 @@
+g2zproxy
+setup.py
+graphite_to_zabbix.egg-info/PKG-INFO
+graphite_to_zabbix.egg-info/SOURCES.txt
+graphite_to_zabbix.egg-info/dependency_links.txt
+graphite_to_zabbix.egg-info/requires.txt
+graphite_to_zabbix.egg-info/top_level.txt
