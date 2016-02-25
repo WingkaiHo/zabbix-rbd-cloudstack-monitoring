@@ -10,6 +10,15 @@
 
 2) 下面命命令需要在zabbix-agent执行. zabbix-agent就是代表所以被监控物理机器，都是zabbix-agent角色机器.
    zabbix-agent# yum install zabbix zabbix-agent
+
+3) 下面的配置只需要在cloudstack management角色机器做命令写为:
+   cloudstack-management# vim /etc/cloudstack/management/log4j-cloud.xml
+
+2. Cloustack management服务监控需要在Cloustack源码对应模块打补丁以后才可以使用
+   可以参考当前目录下 cloudstack/fix-cs-alarts-bug/ 相关说明.
+   
+3. Cloudstack management 模板监控事件说明
+   参考当前目录下 cloudstack/doc-snmp-alert/
     
 二. zabbix-server 安装
 
@@ -194,7 +203,7 @@
    重新进入screen可以查看后台任务
    zabbix-server# screen -R zabbix
 
-   ###注意: 严禁在脚本执行期间中断脚本运行，否则可能造成表损坏.   
+   注意: 严禁在脚本执行期间中断脚本运行，否则可能造成表损坏.   
 
 三. zabbix-agent 安装
 
@@ -282,18 +291,12 @@
 
 1. 导入ceph监控模板到zabbix-server
    ceph监控模块需要用到graphite to zabbix才可以使用，请参考步骤五进行安装. 
-   ceph监控数据保存在graphite数据库，通过grafana-web 展示的。详细部署参考我另外项目https://github.com/WingkaiHo/ceph-monitor-dashboar
+   ceph监控数据保存在graphite数据库，通过grafana-web 展示的。详细部署参考我另外项目https://github.com/WingkaiHo/ceph-monitor-dashboard
    
    1) 打开页面
       http://zabbix-server-ip/zabbix/
 
-   2）添加Ceph 管理组
-      点击configuration(配置)->Group->Create host group 按照要求:
-
-      Group name: Ceph
-      然后按 add键  
-
-   3) 导入ceph集群监控模板
+   2) 导入ceph集群监控模板
       点击configuration(配置)->Templates(模板) 然后group 选择ceph，点击Import
       按照要求选择xml文件(ceph模板xml 文件存放在当前目录下 zabbix/zbx_ceph_tmpl.xml)
       最后点击Import
@@ -317,7 +320,7 @@
    点击最下方的add键
 
    添加成功后就可以对ceph集群进行监控.
-   ###注意: 目前一套graphite，zabbix 环境只能监控一个ceph集群.
+   注意: 目前一套graphite，zabbix 环境只能监控一个ceph集群.
 
 六. Cloudstack Management 服务监控.
 
@@ -345,10 +348,10 @@
      5) 测试MIB是否配置成功
         snmptranslate -On CS-ROOT-MIB::unallocatedVirtualNetworkpublicIp
    
-   3.snmptrap模式配置
-     cloudstack management通过snmptrap 发送报警信息的，配置snmptrap才可以接受到报警.
+   3.接受cloudstack发送snmptrap消息
+     cloudstack management通过snmptrap 发送报警信息的，配置snmptrap server后才可以接受到报警.
 
-     1) 安装snmptrap和snmptt环境
+     1) 安装snmptrap(接收报警信息服务)和snmptt(把cloudstack报警信息准化zabbix告警工具)环境
         zabbix-server# yum install net-snmp-perl perl-Config-IniFiles.noarch snmptt.noarch
 
      2）修改snmptrap 启动文件
@@ -384,13 +387,72 @@
        log_system_enable = 1
        daemon_uid = root
 
-     6)生成cloudstack snmptt配置文件
+     6)生成cloudstack转换zabbix告警对照表
        
-       snmptt conf文件可以通过下面命令生成snmpttconvertmib --in=/usr/share/snmp/mibs/CS-ROOT-MIB.txt --out=./snmptt.conf.CS-ROOT-MIB
-       但是当前已经准备好了只需把当前目录 cloudstack/CS-ROOT-MIB.txt 拷贝到zabbix-server机器/etc/snmp/
+       I.   snmptt conf文件可以通过下面命令生成snmpttconvertmib --in=/usr/share/snmp/mibs/CS-ROOT-MIB.txt --out=./snmptt.conf.CS-ROOT-MIB
+       II.  配置把cloudstack对于告警发送到对应zabiix对应机器选项key值上
+       III. conf文件已经配置好了。I，II 不需要做，只需把当前目录 cloudstack/CS-ROOT-MIB.txt 拷贝到zabbix-server机器/etc/snmp/, 重新启动
+            snmp， snmptrap ，snmptt 服务
 
      7) 启动snmptrap
         zabbix-server# systemctl enable snmptrapd.service
         zabbix-server# systemctl restart snmptrapd.service    
+
+     8) 启动snmptt
+        zabbix-server# systemctl enable snmptt.service
+        zabbix-server# systemctl start snmptt.service
  
-	4. 防火墙配置	
+	 9) 防火墙配置
+        需要打开snmp， snmptrap端口
+        zabbix-server# vim /ect/sysconfig/iptables
+        -A INPUT -m state --state NEW -m udp -p udp --dport 161 -j ACCEPT
+        -A INPUT -m state --state NEW -m udp -p udp --dport 162 -j ACCEPT
+    
+   4.Cloudstack Management 服务配置修改
+      cloudstack-management# vim /etc/cloudstack/management/log4j-cloud.xml
+
+      <appender name="SNMP" class="org.apache.cloudstack.alert.snmp.SnmpTrapAppender">
+      <param name="Threshold" value="WARN"/>  <!-- Do not edit. The alert feature assumes WARN. -->
+      <param name="SnmpManagerIpAddresses" value="10.1.1.1,10.1.1.2"/> <!-- 填入zabbix-server ip地址，可以填多个以','分割>
+      <param name="SnmpManagerPorts" value="162,162"/> <!-- snmptrap 端口, 默认填入162就可以了>
+      <param name="SnmpManagerCommunities" value="public,public"/>
+      <layout class="org.apache.cloudstack.alert.snmp.SnmpEnhancedPatternLayout"> <!-- Do not edit -->
+      <param name="PairDelimeter" value="//"/>
+      <param name="KeyValueDelimeter" value="::"/>
+      </layout>
+      </appender>  
+
+      修改以后:
+      cloudstack-management# service cloudstack-management restart
+
+   5.zabbix页面添加cloudstack management 模板
+ 
+   1) 打开页面
+      http://zabbix-server-ip/zabbix/ 
+ 
+   2) 导入cloudstack management监控模板
+      点击configuration(配置)->Templates(模板)->Import
+      按照要求选择xml文件(cloudstack management模板xml文件存放在当前目录下 cloudstack/zbx_cs_templates.xml)
+      最后点击Import
+
+      完成以后就成功添加cloudstack management
+
+   6.添加cloudstack management设备
+ 
+     zabbix 监控以主机为单位，cloudstack management服务运行在一台主机上，监控cloudstack management状态先添加cloudstack management运行主机然后，主机temple 选择cloudstack management监控模板，就可以得到这台机器运行cloudstack management服务的报服务息. 一台机器可以连接多个模板.
+
+   点击configuration(配置)->Host(主机) Group 选择Cloudstack Management, 然后点击Create键按照下面要求输入:
+   Host name:                (必须填这个名称/etc/hosts ip map 对应名称一样)
+   Visible name:             
+   Group In groups: Cloudstack Management
+   Agent interface:          (必须填这个名称/etc/hosts ip map hostname对于ip)
+   Monitored by proxy: (no proxy)
+   Enabled true
+
+   点击Templates tab
+   link new templates 选择 Template CloudStack Management
+   添加下面add
+
+   再点击最下方的add键
+
+   重复上面的步骤添加多台的机器上cloudstack management服务状态进行监控。
