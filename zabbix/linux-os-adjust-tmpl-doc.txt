@@ -1,0 +1,35 @@
+一.进程数目相关触发器调整
+
+1. Too many processes on {HOST.NAME} 调整
+   原来: {Template OS Linux Adjust:proc.num[].avg(5m)} > 300
+   修改后: {Template OS Linux Adjust:system.cpu.num.last()} > 0 and ({Template OS Linux Adjust:proc.num[].avg(5m)} / 
+           {Template OS Linux Adjust:system.cpu.num.last()} > 200)
+
+   解释: 原来无论什么类型cpu超过300个进程就报警，如果多核cpu服务器，例如32核，300进程其实不多，修改后平均每个核运行200个进程以上才报警
+
+2. Too many processes running on {HOST.NAME}
+   原来： {Template OS Linux Adjust:proc.num[,,run].avg(5m)} > 30
+   修改后：{Template OS Linux Adjust:system.cpu.num.last()} > 0 and ({Template OS Linux Adjust:proc.num[].avg(5m)} /
+           {Template OS Linux Adjust:system.cpu.num.last()} > 30
+ 
+   解释: 修改原因同上.
+
+二.机器不可到达相关触发器
+
+1. 添加ICMP Ping 
+   Item： ICMP Ping 
+   Interval： 60s
+
+2. 添加{HOST.NAME} is unreachable
+   表达式: {Template OS Linux Adjust:icmpping.count(10m,0)}>7 
+   解释: 由于每分钟ping一次，获取ping返回值. 10m ping 失败7次以上(80% 失败率)认为机器不可到达.
+
+3. 添加{HOST.NAME} netwrok is unstable
+   表达式: {Template OS Linux Adjust:icmpping.count(10m,0)}>2 依赖： {HOST.NAME} is unreachable
+   解释: 由于每分钟ping一次，获取ping返回值. 10m ping 2次以上ping不同代表网络不稳定
+
+4. Zabbix Agent on {HOST.NAME} is unreachable for 5 minutes 调整
+   添加依赖: {HOST.NAME} is unreachable 和 {HOST.NAME} netwrok is unstable
+
+三.修改FS Discover   
+   修改文件系统自动发现, 去除对OSD 对于mound挂载点监控.
