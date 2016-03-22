@@ -275,7 +275,8 @@
      zabbix-server# cd graphite-to-zabbix
      zabbix-server# yum install python-pyzabbix zabbix-sender
      zabbix-server# pip install ./configparser-3.3.0r2.tar.gz
-     zabbix-server# pip install ./graphite-to-zabbix-0.1.6.tar.gz
+     zabbix-server# pip install ./graphite-to-zabbix-0.1.6.tar.gz 
+     zabbix-server# pip install ./py-zabbix-0.6.1.tar.gz
 
 2. 添加定时任务
 	
@@ -386,6 +387,7 @@
        date_time_format = %H:%M:%S %Y/%m/%d
        log_system_enable = 1
        daemon_uid = root
+	   syslog_enable = 0 
 
      6)生成cloudstack转换zabbix告警对照表
        
