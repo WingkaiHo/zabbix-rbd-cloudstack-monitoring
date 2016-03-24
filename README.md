@@ -353,7 +353,7 @@
      cloudstack management通过snmptrap 发送报警信息的，配置snmptrap server后才可以接受到报警.
 
      1) 安装snmptrap(接收报警信息服务)和snmptt(把cloudstack报警信息准化zabbix告警工具)环境
-        zabbix-server# yum install net-snmp-perl perl-Config-IniFiles.noarch snmptt.noarch
+        zabbix-server# yum install net-snmp-perl perl-Config-IniFiles.noarch snmptt.noarch perl-sys-Syslog
 
      2）修改snmptrap 启动文件
         zabbix-server# vim /usr/lib/systemd/system/snmptrapd.service
@@ -387,7 +387,8 @@
        date_time_format = %H:%M:%S %Y/%m/%d
        log_system_enable = 1
        daemon_uid = root
-	   syslog_enable = 0 
+	   syslog_enable = 0
+	   dns_enable = 1 
 
      6)生成cloudstack转换zabbix告警对照表
        
