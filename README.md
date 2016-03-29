@@ -388,7 +388,16 @@
        log_system_enable = 1
        daemon_uid = root
 	   syslog_enable = 0
-	   dns_enable = 1 
+	   dns_enable = 1
+
+		[TrapFiles]
+		# A list of snmptt.conf files (this is NOT the snmptrapd.conf file).  The COMPLETE path 
+		# and filename.  Ex: '/etc/snmp/snmptt.conf'
+		snmptt_conf_files = <<END
+		/etc/snmp/snmptt.conf
+		/etc/snmp/snmptt.conf.CS-ROOT-MIB
+		END
+ 
 
      6)生成cloudstack转换zabbix告警对照表
        
