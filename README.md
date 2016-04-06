@@ -203,7 +203,13 @@
    重新进入screen可以查看后台任务
    zabbix-server# screen -R zabbix
 
-   注意: 严禁在脚本执行期间中断脚本运行，否则可能造成表损坏.   
+   注意: 严禁在脚本执行期间中断脚本运行，否则可能造成表损坏.  
+
+5) 关闭housekeeping
+   Adminstration->Ceneral 右上角下拉框选择Housekeeping 
+   把所以项目Enable interal housekeeping 去除
+
+   执行脚本以后所有item histroy 都是无效。 
 
 三. zabbix-agent 安装
 
