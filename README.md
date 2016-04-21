@@ -455,7 +455,7 @@
 
       完成以后就成功添加cloudstack management
 
-   6.添加cloudstack management设备
+	6.添加cloudstack management设备
  
      zabbix 监控以主机为单位，cloudstack management服务运行在一台主机上，监控cloudstack management状态先添加cloudstack management运行主机然后，主机temple 选择cloudstack management监控模板，就可以得到这台机器运行cloudstack management服务的报服务息. 一台机器可以连接多个模板.
 
@@ -474,3 +474,71 @@
    再点击最下方的add键
 
    重复上面的步骤添加多台的机器上cloudstack management服务状态进行监控。
+
+
+七. 自动注册
+   自动注册: 当zabbix-agent启动，并且连接上zabbix-server时候, 通过zabbix-server用户定义action注册主机设备。自动搜索发现：zabbix主动通过ping等方式添加主机，自动注册主动的(active) 比自动发现消耗zabbix-server更低的资源，但是只能用于有安装zabbix-agent才可以使用，其他监控方式都不行。
+
+	以添加dell 服务器为例子进行说明，dell服务安装linux系统，服务器内置有Dell监控系统idrac， 其中一台服务器ip地址192.168.20.7， idrac网段使用192.168.230.0， idrac ip最后1位与服务linux ip最后一位是相同的。
+
+	1. zabbix-agent 上面的配置
+		zabbix-agent# vim /etc/zabbix/zabbix-agentd.conf	
+		ListenIP : #此处填写Agent监听IP地址
+		ListenPort: #此处填写Agent监听端口
+		HostMetadata=DELL LINUX
+		Hostname= #此处填写机器名字， 如果不向填入具体hostname 可以选择打开HostnameItem=system.hostname
+
+
+	2. zabbix-server 页面上
+		configuration->Actions, 右侧Event source下拉框选择 “Auto registration”, 然后点击Create action
+		下面两个action必须按照先后添加
+
+		1)添加linux主机注册
+		
+		Tab action
+		Name: Linux Server Auto Registration
+		Default subject: Auto registration: {HOST.HOST}
+		Default message:
+				Host name: {HOST.HOST}
+				Host IP: {HOST.IP}
+				Agent port: {HOST.PORT}
+
+		Tab conditions
+		New condition: Host metadata like  LINUX
+
+		Tab operation:
+		Add host
+		Link to templates:	Template OS Linux
+
+		然后点击add 添加
+
+		2)添加dell idrac监控
+		Tab action
+		Name Dell IDRAC Snmp Interface Atuo Registration
+		Default subject: Auto registration: {HOST.HOST}
+		Default message:
+			Host name: {HOST.HOST}
+			Host IP: {HOST.IP}
+			Agent port: {HOST.PORT}
+
+		Tab conditions
+		New condition: Host metadata like  LINUX  添加完后点击add
+
+		Tab operation:
+		Link to templates:  Template_Dell_IDRAC
+        
+		添加Run Remote command
+		Target list : current host
+		Type: custom script
+		Execute on: zabbix server
+		/usr/bin/zabbix-add-interface -host={HOST.HOST} -agent_ip={HOST.IP} -net_section=192.168.230.0 -user=admin -password=zabbix
+
+		zabbix-add-interface 工具以及代码在zabbix dell-idrac目录
+		-net_section=	#填写idrac网段
+		-user=			#zabbix 登录用户名
+		-password=		#zabbix 密码
+
+		其他选项不用修改	
+		
+		
+		填写完毕以后点击Add， 然后点击右下方Add
