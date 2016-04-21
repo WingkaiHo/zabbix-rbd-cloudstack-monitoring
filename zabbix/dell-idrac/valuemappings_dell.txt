@@ -1,0 +1,103 @@
+Host - Status
+0 ⇒ Not available
+1 ⇒ Available
+2 ⇒ Unknown
+
+Dell - Battery Learning	
+1 ⇒ Failed
+2 ⇒ Active
+4 ⇒ Timed Out
+8 ⇒ Requested
+16 ⇒ Idle
+
+Dell - Battery Status	
+0 ⇒ Unknown
+1 ⇒ OK
+2 ⇒ Failed
+7 ⇒ Reconditioning
+9 ⇒ High
+10 ⇒ Low
+12 ⇒ Charging
+21 ⇒ Missing
+
+Dell - Bus Type of Disk	
+1 ⇒ SCSI
+2 ⇒ IDE
+3 ⇒ Fibre Channel
+4 ⇒ SSA
+6 ⇒ USB
+7 ⇒ SATA
+8 ⇒ SAS
+9 ⇒ PCIe
+
+Dell - Condition	
+0 ⇒ Unknown
+1 ⇒ Ready
+2 ⇒ Failed
+3 ⇒ Online
+4 ⇒ Offline
+6 ⇒ Degraded
+7 ⇒ Reconditioning
+9 ⇒ High (Inactive)
+10 ⇒ Power Low
+11 ⇒ Removed
+12 ⇒ Charging
+13 ⇒ Non-RAID
+14 ⇒ Not Ready
+15 ⇒ Resynching
+21 ⇒ Missing
+22 ⇒ Replacing
+23 ⇒ Spinning Down
+24 ⇒ Rebuilding (Reconstructing)
+25 ⇒ No Media
+26 ⇒ Formatting
+28 ⇒ Diagnostics
+34 ⇒ Predictive failure
+35 ⇒ Initializing
+36 ⇒ Background Initialization (Learning)
+38 ⇒ Resynching Paused
+39 ⇒ Foreign
+40 ⇒ Clear
+41 ⇒ Unsupported
+52 ⇒ Permanently Degraded
+53 ⇒ Incompatible
+54 ⇒ Degraded Redundancy
+56 ⇒ Read Only
+
+Dell - Power Supply Sensor State	
+1 ⇒ Presence Detected
+2 ⇒ psFailureDetected
+4 ⇒ predictiveFailure
+8 ⇒ psACLost
+16 ⇒ acLostOrOutOfRange
+32 ⇒ acOutOfRangeButPresent
+64 ⇒ Configuration Error
+
+Dell - Probe Status	
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Ok
+4 ⇒ Non Critical Upper
+5 ⇒ Critical Upper
+6 ⇒ Non Recoverable Upper
+7 ⇒ Non Critical Lower
+8 ⇒ Critical Lower
+9 ⇒ Non Recoverable Lower
+10 ⇒ Failed
+
+Dell - Redundancy Status	
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Full
+4 ⇒ Degraded
+5 ⇒ Lost
+6 ⇒ Not Redundant
+7 ⇒ Redundancy Offline
+
+Dell - Status	
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Ok
+4 ⇒ Non Critical
+5 ⇒ Critical
+6 ⇒ Non Recoverable

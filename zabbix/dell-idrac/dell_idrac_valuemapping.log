@@ -1,0 +1,35 @@
+Dell - ObjectStatusEnum	
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Ok
+4 ⇒ Non-Critical
+5 ⇒ Critical
+6 ⇒ Non-Recoverable
+
+Dell - StateSettingsFlags
+0 ⇒ No enabled
+1 ⇒ Unknown
+2 ⇒ Enabled
+4 ⇒ Not ready
+6 ⇒ Enabled, not ready
+
+Dell - StatusProbeEnum
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Ok
+4 ⇒ Non-critical Upper
+5 ⇒ Critical Upper
+6 ⇒ Non-recovereable Upper
+7 ⇒ Non-critical Lower
+8 ⇒ Critical Lower
+9 ⇒ Non-recovereable Lower
+10 ⇒ Failed
+
+Dell - StatusRedundancyEnum
+1 ⇒ Other
+2 ⇒ Unknown
+3 ⇒ Full
+4 ⇒ Degraded
+5 ⇒ Lost
+6 ⇒ Not Redundant
+7 ⇒ Redundancy Offline
