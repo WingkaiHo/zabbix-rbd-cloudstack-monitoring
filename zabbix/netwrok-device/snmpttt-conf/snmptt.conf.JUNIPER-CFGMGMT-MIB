@@ -1,0 +1,35 @@
+#
+#
+#
+#
+MIB: JUNIPER-CFGMGMT-MIB (file:/usr/share/snmp/mibs/JUNIPER-CFGMGMT-MIB.txt) converted on Thu Mar  3 04:02:37 2016 using snmpttconvertmib v1.4beta2
+#
+#
+#
+EVENT jnxCmCfgChange .1.3.6.1.4.1.2636.4.5.0.1 "Status Events" Normal
+FORMAT Notification of a configuration management event as $*
+SDESC
+Notification of a configuration management event as
+recorded in jnxCmCfgChgEventTable.
+Variables:
+  1: jnxCmCfgChgEventTime
+  2: jnxCmCfgChgEventDate
+  3: jnxCmCfgChgEventSource
+  4: jnxCmCfgChgEventUser
+  5: jnxCmCfgChgEventLog
+EDESC
+#
+#
+#
+EVENT jnxCmRescueChange .1.3.6.1.4.1.2636.4.5.0.2 "Status Events" Normal
+FORMAT Notification of the latest rescue configuration  $*
+SDESC
+Notification of the latest rescue configuration 
+change.
+Variables:
+  1: jnxCmRescueChgTime
+  2: jnxCmRescueChgDate
+  3: jnxCmRescueChgSource
+  4: jnxCmRescueChgUser
+  5: jnxCmRescueChgState
+EDESC

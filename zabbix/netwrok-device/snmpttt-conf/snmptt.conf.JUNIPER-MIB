@@ -1,0 +1,480 @@
+#
+#
+#
+#
+MIB: JUNIPER-MIB (file:/usr/share/snmp/mibs/JUNIPER-MIB.txt) converted on Thu Mar  3 04:04:30 2016 using snmpttconvertmib v1.4beta2
+#
+#
+#
+EVENT jnxPowerSupplyFailure .1.3.6.1.4.1.2636.4.1.1 "Status Events" Normal
+FORMAT A jnxPowerSupplyFailure trap signifies that $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxPowerSupplyFailure" -o "jnxPowerSupplyFailure. jnxContentsDescr:$5, jnxOperatingState:$6"
+SDESC
+A jnxPowerSupplyFailure trap signifies that
+the SNMP entity, acting in an agent role, has
+detected that the specified power supply in the
+chassis has been in the failure (bad DC output) 
+condition.
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingState
+EDESC
+#
+#
+#
+EVENT jnxFanFailure .1.3.6.1.4.1.2636.4.1.2 "Status Events" Normal
+FORMAT A jnxFanFailure trap signifies that the SNMP $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxFanFailure" -o "jnxFanFailure. jnxContentsDescr:$5, jnxOperatingState:$6"
+SDESC
+A jnxFanFailure trap signifies that the SNMP
+entity, acting in an agent role, has detected
+that the specified cooling fan or impeller in 
+the chassis has been in the failure (not spinning) 
+condition.
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingState
+EDESC
+#
+#
+#
+EVENT jnxOverTemperature .1.3.6.1.4.1.2636.4.1.3 "Status Events" Normal
+FORMAT A jnxOverTemperature trap signifies that the  $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxOverTemperature" -o "jnxOverTemperature. jnxContentsDescr:$5, jnxOperatingTemp:$6"
+SDESC
+A jnxOverTemperature trap signifies that the 
+SNMP entity, acting in an agent role, has 
+detected that the specified hardware component
+in the chassis has experienced over temperature
+condition.
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingTemp
+EDESC
+#
+#
+#
+EVENT jnxRedundancySwitchover .1.3.6.1.4.1.2636.4.1.4 "Status Events" Normal
+FORMAT A jnxRedundancySwitchover trap signifies that  $*
+SDESC
+A jnxRedundancySwitchover trap signifies that 
+the SNMP entity, acting in an agent role, has 
+detected that the specified hardware component
+in the chassis has experienced a redundancy 
+switchover event defined as a change in state
+of jnxRedundancyState from master to backup or
+vice versa.
+Variables:
+  1: jnxRedundancyContentsIndex
+  2: jnxRedundancyL1Index
+  3: jnxRedundancyL2Index
+  4: jnxRedundancyL3Index
+  5: jnxRedundancyDescr
+  6: jnxRedundancyConfig
+  7: jnxRedundancyState
+  8: jnxRedundancySwitchoverCount
+  9: jnxRedundancySwitchoverTime
+  10: jnxRedundancySwitchoverReason
+EDESC
+#
+#
+#
+EVENT jnxFruRemoval .1.3.6.1.4.1.2636.4.1.5 "Status Events" Normal
+FORMAT A jnxFruRemoval trap signifies that the SNMP  $*
+SDESC
+A jnxFruRemoval trap signifies that the SNMP 
+entity, acting in an agent role, has detected 
+that the specified FRU (Field Replaceable Unit)
+has been removed from the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFruInsertion .1.3.6.1.4.1.2636.4.1.6 "Status Events" Normal
+FORMAT A jnxFruInsertion trap signifies that the SNMP  $*
+SDESC
+A jnxFruInsertion trap signifies that the SNMP 
+entity,	acting in an agent role, has detected that
+the specified FRU (Field Replaceable Unit) has been 
+inserted into the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFruPowerOff .1.3.6.1.4.1.2636.4.1.7 "Status Events" Normal
+FORMAT A jnxFruPowerOff trap signifies that the SNMP  $*
+SDESC
+A jnxFruPowerOff trap signifies that the SNMP 
+entity, acting in an agent role, has detected 
+that the specified FRU (Field Replaceable Unit)
+has been powered off in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+  8: jnxFruOfflineReason
+  9: jnxFruLastPowerOff
+  10: jnxFruLastPowerOn
+EDESC
+#
+#
+#
+EVENT jnxFruPowerOn .1.3.6.1.4.1.2636.4.1.8 "Status Events" Normal
+FORMAT A jnxFruPowerOn trap signifies that the SNMP  $*
+SDESC
+A jnxFruPowerOn trap signifies that the SNMP 
+entity,	acting in an agent role, has detected that
+the specified FRU (Field Replaceable Unit) has been 
+powered on in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+  8: jnxFruOfflineReason
+  9: jnxFruLastPowerOff
+  10: jnxFruLastPowerOn
+EDESC
+#
+#
+#
+EVENT jnxFruFailed .1.3.6.1.4.1.2636.4.1.9 "Status Events" Normal
+FORMAT This indicates the specified FRU (Field Replaceable Unit) $*
+SDESC
+This indicates the specified FRU (Field Replaceable Unit)
+has failed in the chassis. Most probably this is due toi
+some hard error such as fru is not powering up or not
+able to load ukernel. In these cases, fru is replaced.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFruOffline .1.3.6.1.4.1.2636.4.1.10 "Status Events" Normal
+FORMAT A jnxFruOffline trap signifies that the SNMP $*
+SDESC
+A jnxFruOffline trap signifies that the SNMP
+entity, acting in an agent role, has detected
+that the specified FRU (Field Replaceable Unit)
+has gone offline in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+  8: jnxFruOfflineReason
+  9: jnxFruLastPowerOff
+  10: jnxFruLastPowerOn
+EDESC
+#
+#
+#
+EVENT jnxFruOnline .1.3.6.1.4.1.2636.4.1.11 "Status Events" Normal
+FORMAT A jnxFruOnline trap signifies that the SNMP $*
+SDESC
+A jnxFruOnline trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified FRU (Field Replaceable Unit) has
+gone online in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFruCheck .1.3.6.1.4.1.2636.4.1.12 "Status Events" Normal
+FORMAT A jnxFruCheck trap signifies that the SNMP $*
+SDESC
+A jnxFruCheck trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified FRU (Field Replaceable Unit) has
+encountered some operational errors and gone into
+check state in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFEBSwitchover .1.3.6.1.4.1.2636.4.1.13 "Status Events" Normal
+FORMAT A jnxFEBSwitchover trap signifies that the SNMP $*
+SDESC
+A jnxFEBSwitchover trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified FEB (Forwarding Engine Board) has
+switched over.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxHardDiskFailed .1.3.6.1.4.1.2636.4.1.14 "Status Events" Normal
+FORMAT A jnxHardDiskFailed trap signifies that the SNMP $*
+SDESC
+A jnxHardDiskFailed trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the Disk in the specified Routing Engine has
+encountered some operational errors and gone into
+failed state in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxHardDiskMissing .1.3.6.1.4.1.2636.4.1.15 "Status Events" Normal
+FORMAT A DiskMissing trap signifies that the SNMP $*
+SDESC
+A DiskMissing trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+hard disk in the specified outing Engine is missing
+from boot device list.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxBootFromBackup .1.3.6.1.4.1.2636.4.1.16 "Status Events" Normal
+FORMAT A jnxBootFromBackup trap signifies that the SNMP $*
+SDESC
+A jnxBootFromBackup trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified  routing-engine/member has booted from
+the back up root partition
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFmLinkErr .1.3.6.1.4.1.2636.4.1.17 "Status Events" Normal
+FORMAT A LinkErr trap signifies that the SNMP $*
+SDESC
+A LinkErr trap signifies that the SNMP
+entity, acting in an agent role, has detected
+link errors.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxFmCellDropErr .1.3.6.1.4.1.2636.4.1.18 "Status Events" Normal
+FORMAT A CellDropErr trap signifies that the SNMP $*
+SDESC
+A CellDropErr trap signifies that the SNMP
+entity, acting in an agent role, has detected 
+cell drop errors.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxExtSrcLockLost .1.3.6.1.4.1.2636.4.1.19 "Status Events" Normal
+FORMAT A ExtSrcLockLost trap signifies that the SNMP $*
+SDESC
+A ExtSrcLockLost trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+a lock for an external clock source has been lost.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxPowerSupplyOK .1.3.6.1.4.1.2636.4.2.1 "Status Events" Normal
+FORMAT A jnxPowerSupplyOK trap signifies that the  $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxPowerSupplyFailure" -o "jnxPowerSupplyOK. jnxContentsDescr:$5, jnxOperatingState:$6"
+SDESC
+A jnxPowerSupplyOK trap signifies that the 
+SNMP entity, acting in an agent role, has
+detected that the specified power supply in the
+chassis has recovered from the failure (bad DC output) 
+condition.
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingState
+EDESC
+#
+#
+#
+EVENT jnxFanOK .1.3.6.1.4.1.2636.4.2.2 "Status Events" Normal
+FORMAT A jnxFanOK trap signifies that the SNMP $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxFanFailure" -o "jnxFanOK. jnxContentsDescr:$5.  jnxOperatingState:$6"
+SDESC
+A jnxFanOK trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified cooling fan or impeller in the chassis
+has recovered from the failure (not spinning) condition.
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingState
+EDESC
+#
+#
+#
+EVENT jnxTemperatureOK .1.3.6.1.4.1.2636.4.2.3 "Status Events" Normal
+FORMAT A jnxTemperatureOK trap signifies that the  $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s "juniper-srx240" -k "juniper.jnxOverTemperature" -o "jnxTemperatureOK. jnxContentsDescr:$5, jnxOperatingTemp:$6"
+SDESC
+A jnxTemperatureOK trap signifies that the 
+SNMP entity, acting in an agent role, has 
+detected that the specified hardware component
+in the chassis has recovered from over temperature
+condition. 
+Variables:
+  1: jnxContentsContainerIndex
+  2: jnxContentsL1Index
+  3: jnxContentsL2Index
+  4: jnxContentsL3Index
+  5: jnxContentsDescr
+  6: jnxOperatingTemp
+EDESC
+#
+#
+#
+EVENT jnxFruOK .1.3.6.1.4.1.2636.4.2.4 "Status Events" Normal
+FORMAT A jnxFruOK trap signifies that the SNMP $*
+SDESC
+A jnxFruOK trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+the specified FRU (Field Replaceable Unit) has
+recovered from previous operational errors and it
+is in ok state in the chassis.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
+#
+#
+#
+EVENT jnxExtSrcLockAcquired .1.3.6.1.4.1.2636.4.2.5 "Status Events" Normal
+FORMAT A ExtSrcLockAcquired trap signifies that the SNMP $*
+SDESC
+A ExtSrcLockAcquired trap signifies that the SNMP
+entity, acting in an agent role, has detected that
+a lock for an external clock source has been acquired.
+Variables:
+  1: jnxFruContentsIndex
+  2: jnxFruL1Index
+  3: jnxFruL2Index
+  4: jnxFruL3Index
+  5: jnxFruName
+  6: jnxFruType
+  7: jnxFruSlot
+EDESC
