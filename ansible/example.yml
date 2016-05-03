@@ -1,0 +1,9 @@
+---
+- hosts: collectd
+  user: vagrant
+  sudo: true
+  vars:
+    motd_warning: 'WARNING: Use by ACME Employees ONLY'
+  tasks:
+    - name: Install packages for collectd
+      action: yum name=collectd state=installed
