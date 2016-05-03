@@ -1,0 +1,79 @@
+- name: install packages
+  sudo: yes
+  yum:
+    name: "{{ item.name }}"
+    enablerepo: "{{ item.enablerepo }}"
+    state: present
+  with_items: zabbix_server_install_packages
+
+- name: configure zabbix-server.conf
+  sudo: yes
+  template:
+    dest: /etc/zabbix/zabbix_server.conf
+    src: zabbix_server.conf.j2
+    owner: root
+    group: zabbix
+    mode: 0640
+  notify: restart zabbix-server
+
+- name: ensure started zabbix-server
+  sudo: yes
+  service:
+    name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: create zabbix database user
+  mysql_user:
+    login_host: "{{ zabbix_server_database_login_host }}"
+    login_password: "{{ zabbix_server_database_login_password }}"
+    login_port: "{{ zabbix_server_database_login_port }}"
+    login_user: "{{ zabbix_server_database_login_user }}"
+    host: "{{ zabbix_server_database_host }}"
+    name: "{{ zabbix_server_DBUser }}"
+    password: "{{ zabbix_server_DBPassword }}"
+    priv: "{{ zabbix_server_DBName }}.*:ALL"
+    state: present
+
+- name: create zabbix database
+  mysql_db:
+    encoding: utf8
+    login_host: "{{ zabbix_server_database_login_host }}"
+    login_password: "{{ zabbix_server_database_login_password }}"
+    login_port: "{{ zabbix_server_database_login_port }}"
+    login_user: "{{ zabbix_server_database_login_user }}"
+    name: "{{ zabbix_server_DBName }}"
+    state: present
+
+- name: check installed zabbix-server-mysql version
+  shell: zabbix_server_mysql --version | awk '/Zabbix/{ sub(/v/, "", $3); print $3 }'
+  register: installed_version
+
+- name: table exists?
+  command: >
+    mysql --host={{ zabbix_server_DBHost }}
+          --password={{ zabbix_server_DBPassword }}
+          --port={{ zabbix_server_DBPort }}
+          --user={{ zabbix_server_DBUser }}
+          {{ zabbix_server_DBName }}
+          --execute='SHOW TABLES'
+  register: table_exists
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ zabbix_server_mysql_bindir }}"
+
+- name: migration zabbix database
+  mysql_db:
+    login_host: "{{ zabbix_server_database_login_host }}"
+    login_user: "{{ zabbix_server_database_login_user }}"
+    login_password: "{{ zabbix_server_database_login_password }}"
+    login_port: "{{ zabbix_server_database_login_port }}"
+    name: "{{ zabbix_server_DBName }}"
+    state: import
+    target: "{{ item }}"
+  with_items:
+    - /usr/share/doc/zabbix-server-mysql-{{ installed_version.stdout }}/create/schema.sql
+    - /usr/share/doc/zabbix-server-mysql-{{ installed_version.stdout }}/create/images.sql
+    - /usr/share/doc/zabbix-server-mysql-{{ installed_version.stdout }}/create/data.sql
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ zabbix_server_mysql_bindir }}"
+  when: table_exists.stdout.find('user_history') == -1

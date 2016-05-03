@@ -1,0 +1,6 @@
+zabbix_server_database_login_host: localhost
+zabbix_server_database_login_password: engine
+zabbix_server_database_login_port: 3306
+zabbix_server_database_login_user: root
+
+zabbix_server_mysql_bindir: ""
