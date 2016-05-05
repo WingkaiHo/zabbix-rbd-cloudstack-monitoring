@@ -275,7 +275,7 @@
 1. 安装graphite_to_zabbxi以及相关的包
    1)首先自行安装python-pip
 
-   2)把当前目录下 zabbix/graphite-to-zabbix目拷贝到zabbix-server上
+   2)把当前目录下 ansible/resource/graphite-to-zabbix目拷贝到zabbix-server上
 
    3)安装相关包
      zabbix-server# cd graphite-to-zabbix
