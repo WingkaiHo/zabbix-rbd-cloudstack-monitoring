@@ -6,6 +6,88 @@
     state: present
   with_items: zabbix_server_install_packages
 
+
+##
+# Setup the snmpd service 
+##
+
+# add your device snmp mib file here
+- name: copy mibs over
+  sudo: yes
+  copy: src=resource/usr/share/snmp/mibs/{{ item }}.txt  dest=/usr/share/snmp/mibs/{{ item }}.txt owner=root group=root mode="u=rw,g=r,o=r"
+  with_items:
+      - CS-ROOT-MIB
+      - HUAWEI-MIB
+      - HUAWEI-ETHARP-MIB
+      - HUAWEI-ENTITY-TRAP-MIB
+      - HUAWEI-BASE-TRAP-MIB
+      - JUNIPER-CFGMGMT-MIB
+      - JUNIPER-COLLECTOR-MIB
+      - JUNIPER-MIB
+      - JUNIPER-SMI
+      - IDRAC-MIB
+  notify: restart snmpd
+
+- name: start snmpd at boot
+  action: service name=snmpd state=started enabled=yes
+
+##
+# Setup the snmptrapd service 
+##
+
+# use osd as trap info
+- name: update the snmptrapd service file 
+  sudo: yes
+  copy: src=resource/usr/lib/systemd/system/snmptrapd.service dest=/usr/lib/systemd/system/snmptrapd.service owner=root group=root mode="u=rw,g=r,o=r"
+  notify: reload systemd 
+
+- name: update the snmptrapd conf 
+  sudo: yes
+  copy: src=resource/etc/snmp/snmptrap.conf dest=/etc/snmp/snmptrap.conf owner=root group=root mode="u=rw,g=r,o=r"
+  notify: restart snmptrapd 
+
+##
+# Setup the snmptt service
+##
+
+#snmptt conf item:
+snmp_conf_item:
+  - snmptt.conf.ENTITY-MIB
+  - snmptt.conf.ENTITY-MIB
+  - snmptt.conf.HUAWEI-BASE-TRAP-MIB
+  - snmptt.conf.HUAWEI-ENTITY-TRAP-MIB
+  - snmptt.conf.HUAWEI-ETHARP-MIB
+  - snmptt.conf.HUAWEI-MIB
+  - snmptt.conf.IANA-ITU-ALARM-TC-MIB
+  - snmptt.conf.ITU-ALARM-TC-MIB
+  - snmptt.conf.JUNIPER-CFGMGMT-MIB
+  - snmptt.conf.JUNIPER-COLLECTOR-MIB
+  - snmptt.conf.JUNIPER-MIB
+  - snmptt.conf.JUNIPER-SMI
+  - snmptt.conf.P-BRIDGE-MIB
+
+
+- name: copy snmptt conf over
+  sudo: yes
+  copy: src=resource/etc/snmp/{{ item }}  dest=/etc/snmp/{{ item }} owner=root group=root mode="u=rw,g=r,o=r"
+  with_items: 
+      - snmptt.conf.ENTITY-MIB
+      - snmptt.conf.HUAWEI-BASE-TRAP-MIB
+      - snmptt.conf.HUAWEI-ENTITY-TRAP-MIB
+      - snmptt.conf.HUAWEI-ETHARP-MIB
+      - snmptt.conf.HUAWEI-MIB
+      - snmptt.conf.IANA-ITU-ALARM-TC-MIB
+      - snmptt.conf.ITU-ALARM-TC-MIB
+      - snmptt.conf.JUNIPER-CFGMGMT-MIB
+      - snmptt.conf.JUNIPER-COLLECTOR-MIB
+      - snmptt.conf.JUNIPER-MIB
+      - snmptt.conf.JUNIPER-SMI
+      - snmptt.conf.P-BRIDGE-MIB
+
+- name: configure php conf
+  sudo: yes
+  copy: src=resource/etc/php.conf dest=/etc/php.conf ower=root group=root mode="u=rw,g=r,o=r"
+
 - name: configure zabbix-server.conf
   sudo: yes
   template:

@@ -3,3 +3,24 @@
   service:
     name: zabbix-server
     state: restarted
+
+- name: restart snmpd 
+  sudo: yes
+  service:
+    name: snmpd
+    state: restarted
+
+- name: restart snmptrapd
+  sudo: yes
+  service:
+    name: snmptrapd
+    state: restarted
+
+- name: restart snmptt
+  sudo: yes
+  service:
+    name: snmptt
+    state: restarted
+
+- name: reload systemd
+  comand: /usr/bin/systemctl daemon-reload

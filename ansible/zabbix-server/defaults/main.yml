@@ -12,6 +12,7 @@ zabbix_server_install_packages:
   - { name: perl-Config-IniFiles, enablerepo: base }
   - { name: snmptt, enablerepo: base }
   - { name: perl-Sys-Syslog.x86_64, enablerepo: base }
+  - { name: python-pip.noarch, enablerepo: base }
 
 zabbix_server_AlertScriptsPath: "/usr/lib/zabbix/alertscripts"
 zabbix_server_AllowRoot: "0"
