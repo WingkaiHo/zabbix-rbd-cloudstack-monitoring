@@ -1,0 +1,131 @@
+#
+#
+#
+#
+MIB: HUAWEI-ETHARP-MIB (file:/usr/share/snmp/mibs/HUAWEI-ETHARP-MIB.txt) converted on Mon Mar 21 03:09:06 2016 using snmpttconvertmib v1.4beta2
+#
+#
+#
+EVENT hwEthernetARPSpeedLimitAlarm .1.3.6.1.4.1.2011.5.25.123.2.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about ARP speed limit: interface index, current configured limit number, current received number, limit type (ARP, ARP-MISS), source IP address, destination IP address, VPN instance.
+Variables:
+  1: hwEthernetARPSpeedLimitIfIndex
+  2: hwEthernetARPSpeedLimitConfigured
+  3: hwEthernetARPSpeedLimitCurrent
+  4: hwEthernetARPSpeedLimitType
+  5: hwEthernetARPSpeedLimitSrcIPAddr
+  6: hwEthernetARPSpeedLimitDstIPAddr
+  7: hwEthernetARPSpeedLimitVPNinstance
+EDESC
+#
+#
+#
+EVENT hwEthernetARPAntiAttackAlarm .1.3.6.1.4.1.2011.5.25.123.2.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about ARP anti-attack: IP address, MAC, VLAN id, interface index.
+Variables:
+  1: hwEthernetARPAntiAttackIpAddress
+  2: hwEthernetARPAntiAttackMacAddress
+  3: hwEthernetARPAntiAttackVlanId
+  4: hwEthernetARPAntiAttackIfName
+EDESC
+#
+#
+#
+EVENT hwEthernetARPAntiGatewayConflictAlarm .1.3.6.1.4.1.2011.5.25.123.2.3 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about ARP anti-attack: IP address, MAC, VLAN ID, interface index.
+Variables:
+  1: hwEthernetARPAntiGatewayConflictIpAddress
+  2: hwEthernetARPAntiGatewayConflictMacAddress
+  3: hwEthernetARPAntiGatewayConflictVlanId
+  4: hwEthernetARPAntiGatewayConflictIfName
+EDESC
+#
+#
+#
+EVENT hwEthernetARPThresholdExceedAlarm .1.3.6.1.4.1.2011.5.25.123.2.4 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about ARP exceed threshold: slot, threshold, number of dynamic ARP, number of static ARP.
+Variables:
+  1: entPhysicalName
+  2: hwEthernetARPThresholdValue
+  3: hwEthernetARPThresholdDynamicNumber
+  4: hwEthernetARPThresholdStaticNumber
+EDESC
+#
+#
+#
+EVENT hwEthernetARPThresholdResumeAlarm .1.3.6.1.4.1.2011.5.25.123.2.5 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about ARP resume threshold: slot, threshold, number of dynamic ARP, number of static ARP.
+Variables:
+  1: entPhysicalName
+  2: hwEthernetARPThresholdValue
+  3: hwEthernetARPThresholdDynamicNumber
+  4: hwEthernetARPThresholdStaticNumber
+EDESC
+#
+#
+#
+EVENT hwEthernetARPIPConflictEvent .1.3.6.1.4.1.2011.5.25.123.2.6 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.IpConflict" -o "hwEthernetARPIPConflictEvent, Conflict IP:$1, Interface local:$2 Interface Receive: $6"
+SDESC
+
+Trap information about ARP IP conflict.
+Variables:
+  1: hwEthernetARPIPConflictIPAddress
+  2: hwEthernetARPIPConflictLocalInterfaceName
+  3: hwEthernetARPIPConflictLocalMAC
+  4: hwEthernetARPIPConflictLocalVLAN
+  5: hwEthernetARPIPConflictLocalCEVLAN
+  6: hwEthernetARPIPConflictReceiveInterfaceName
+  7: hwEthernetARPIPConflictReceiveMAC
+  8: hwEthernetARPIPConflictReceiveVLAN
+  9: hwEthernetARPIPConflictReceiveCEVLAN
+  10: hwEthernetARPIPConflictType
+EDESC
+#
+#
+#
+EVENT hwEthernetARPMACIPConflict .1.3.6.1.4.1.2011.5.25.123.2.7 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.MacConflict" -o "hwEthernetARPMacConflictEvent, Conflict MAC: $2, Local IP: $3 Interface: $1, Receive IP: $5 InterfaceName: $8"
+SDESC
+
+Trap information about MAC and IP address conflict: conflict interface name, conflict MAC address, conflict IP address, and the received packet's destination MAC address, destination IP address, vlan, ce-vlan, receive interface.
+Variables:
+  1: hwEthernetARPIPConflictLocalInterfaceName
+  2: hwEthernetARPIPConflictReceiveMAC
+  3: hwEthernetARPIPConflictIPAddress
+  4: hwEthernetARPReceiveDstMAC
+  5: hwEthernetARPReceiveDstIPAddr
+  6: hwEthernetARPIPConflictReceiveVLAN
+  7: hwEthernetARPIPConflictReceiveCEVLAN
+  8: hwEthernetARPIPConflictReceiveInterfaceName
+EDESC
+#
+#
+#
+EVENT hwEthernetARPMACIPConflictResolved .1.3.6.1.4.1.2011.5.25.123.2.8 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Trap information about MAC and IP address conflict resolved: conflict interface name, conflict MAC address, conflict IP address.
+Variables:
+  1: hwEthernetARPIPConflictLocalInterfaceName
+  2: hwEthernetARPIPConflictReceiveMAC
+  3: hwEthernetARPIPConflictIPAddress
+EDESC

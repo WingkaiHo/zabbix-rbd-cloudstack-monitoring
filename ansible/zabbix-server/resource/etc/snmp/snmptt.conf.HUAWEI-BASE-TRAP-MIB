@@ -1,0 +1,1384 @@
+#
+#
+#
+#
+MIB: HUAWEI-BASE-TRAP-MIB (file:/usr/share/snmp/mibs/HUAWEI-BASE-TRAP-MIB.mib) converted on Tue Mar 22 22:58:14 2016 using snmpttconvertmib v1.4beta2
+#
+#
+#
+EVENT hwEntityRemove .1.3.6.1.4.1.2011.5.25.129.2.1.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity has been removed.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwEntityInsert .1.3.6.1.4.1.2011.5.25.129.2.1.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity has been inserted.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwEntityUnstable .1.3.6.1.4.1.2011.5.25.129.2.1.3 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity has been inserted but position unstable.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwEntityUnstableResume .1.3.6.1.4.1.2011.5.25.129.2.1.4 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Resume from entity position unstable situation.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwEntityReset .1.3.6.1.4.1.2011.5.25.129.2.1.5 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity will be reseted.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityResetDone .1.3.6.1.4.1.2011.5.25.129.2.1.6 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity has been reseted and in good health now.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityCommunicateError .1.3.6.1.4.1.2011.5.25.129.2.1.7 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Communication error has been detected.
+Include all kinds of communication error between boards.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityCommunicateResume .1.3.6.1.4.1.2011.5.25.129.2.1.8 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Resume from communication error situation.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityInvalid .1.3.6.1.4.1.2011.5.25.129.2.1.9 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwEntityInvalid" -o "hwEntityInvalid, hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalContainedIn:$4. entPhysicalName:$5. hwBaseTrapRelativeResource:$6. hwBaseTrapReasonDescr:$7"
+SDESC
+
+Entity is invalid for some reason.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityResume .1.3.6.1.4.1.2011.5.25.129.2.1.10 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwEntityInvalid" -o "hwEntityResume, hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalContainedIn:$4. entPhysicalName:$5. hwBaseTrapRelativeResource:$6. hwBaseTrapReasonDescr:$7"
+
+SDESC
+
+Entity reusme from invalid situation.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityLeaveMaster .1.3.6.1.4.1.2011.5.25.129.2.1.11 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Redundant entity leave master role.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityBecomeMaster .1.3.6.1.4.1.2011.5.25.129.2.1.12 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Redundant entity become master role.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityOffline .1.3.6.1.4.1.2011.5.25.129.2.1.13 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity change to OFFLINE status.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityOnline .1.3.6.1.4.1.2011.5.25.129.2.1.14 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity change to ONLINE status.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityCheckFail .1.3.6.1.4.1.2011.5.25.129.2.1.15 "Status Events" Normal
+FORMAT $*
+SDESC
+
+
+Failure of self-check occurs to the board
+
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityCheckResume .1.3.6.1.4.1.2011.5.25.129.2.1.16 "Status Events" Normal
+FORMAT $*
+SDESC
+
+
+The status is recovered from the failure of board self-check
+
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityRegFail .1.3.6.1.4.1.2011.5.25.129.2.1.17 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity fail in registration.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityRegSuccess .1.3.6.1.4.1.2011.5.25.129.2.1.18 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Entity success in registration.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwEntityDyingGasp .1.3.6.1.4.1.2011.5.25.129.2.1.19 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwEntityDyingGasp" -o "hwEntityDyingGasp, hwBaseTrapRelativeResource:$1.  hwBaseTrapProbableCause:$2.  hwBaseTrapReasonDescr:$3"
+SDESC
+
+Dying gasp event is occurred.
+Variables:
+  1: hwBaseTrapRelativeResource
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwTempRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.1 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwTempRisingAlarm" -o "hwTempRisingAlarm, hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalName:$4. hwBaseThresholdValue:$5. hwBaseThresholdUnit:$6. hwBaseThresholdHighWarning:$7. hwBaseThresholdHighCritical:$8"
+SDESC
+
+Temperature rise over HIGH threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwTempRisingResume .1.3.6.1.4.1.2011.5.25.129.2.2.2 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwTempRisingAlarm" -o "hwTempRisingResume, hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalName:$4. hwBaseThresholdValue:$5. hwBaseThresholdUnit:$6. hwBaseThresholdHighWarning:$7. hwBaseThresholdHighCritical:$8"
+SDESC
+
+Temperature back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwTempFallingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.3 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwTempFallingAlarm" -o "hwTempFallingAlarm , hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalName:$4. hwBaseThresholdValue:$5. hwBaseThresholdUnit:$6. hwBaseThresholdLowCritical:$7. hwBaseThresholdLowWarning:$8"
+SDESC
+
+Temperature fall below LOW threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwTempFallingResume .1.3.6.1.4.1.2011.5.25.129.2.2.4 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwTempFallingAlarm" -o "hwTempFallingResume"
+SDESC
+
+Temperature back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwHumidityRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.5 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Humidity rise over HIGH threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwHumidityRisingResume .1.3.6.1.4.1.2011.5.25.129.2.2.6 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Humidity back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwHumidityFallingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.7 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Humidity fall below LOW threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwHumidityFallingResume .1.3.6.1.4.1.2011.5.25.129.2.2.8 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Humidity back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwVoltRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.9 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Voltage of power rise over HIGH threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwVoltRisingResume .1.3.6.1.4.1.2011.5.25.129.2.2.10 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Voltage back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwVoltFallingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.11 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Voltage of power fall below LOW threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwVoltFallingResume .1.3.6.1.4.1.2011.5.25.129.2.2.12 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Voltage back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwCurrentRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.13 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Current rise over HIGH threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwCurrentRisingResume .1.3.6.1.4.1.2011.5.25.129.2.2.14 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Current back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+EDESC
+#
+#
+#
+EVENT hwCurrentFallingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.15 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Current fall below LOW threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwCurrentFallingResume .1.3.6.1.4.1.2011.5.25.129.2.2.16 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Current back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwPowerRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.17 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Photoelectric power rise over HIGH threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+  9: hwPowerDirection
+EDESC
+#
+#
+#
+EVENT hwPowerRisingResume .1.3.6.1.4.1.2011.5.25.129.2.2.18 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Photoelectric power back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdHighWarning
+  8: hwBaseThresholdHighCritical
+  9: hwPowerDirection
+EDESC
+#
+#
+#
+EVENT hwPowerFallingAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.19 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Photoelectric power fall below LOW threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+  9: hwPowerDirection
+EDESC
+#
+#
+#
+EVENT hwPowerFallingResume .1.3.6.1.4.1.2011.5.25.129.2.2.20 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Photoelectric power back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseThresholdValue
+  6: hwBaseThresholdUnit
+  7: hwBaseThresholdLowCritical
+  8: hwBaseThresholdLowWarning
+  9: hwPowerDirection
+EDESC
+#
+#
+#
+EVENT hwPowerInsufficiencyAlarm .1.3.6.1.4.1.2011.5.25.129.2.2.21 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The available power of device is not enough for the board.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwEntityRatedPower
+  7: hwDevAvailablePower
+  8: hwDeviceTotalPower
+EDESC
+#
+#
+#
+EVENT hwPowerInsufficiencyResume .1.3.6.1.4.1.2011.5.25.129.2.2.22 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The available power of device becomes sufficient for the board.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwEntityRatedPower
+  7: hwDevAvailablePower
+  8: hwDeviceTotalPower
+EDESC
+#
+#
+#
+EVENT hwAcuSoftwareUpgradeFailure .1.3.6.1.4.1.2011.5.25.129.2.2.23 "Status Events" Normal
+FORMAT $*
+SDESC
+
+ACU current startup system software and next startup system software are difference.
+Variables:
+EDESC
+#
+#
+#
+EVENT hwPowerOff .1.3.6.1.4.1.2011.5.25.129.2.3.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the power is shutting down.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPowerOn .1.3.6.1.4.1.2011.5.25.129.2.3.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the power is starting up.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPowerMixed .1.3.6.1.4.1.2011.5.25.129.2.3.3 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The power is not of the same type!
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPowerMixedResume .1.3.6.1.4.1.2011.5.25.129.2.3.4 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The power is changed to the same type!
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwCPUUtilizationRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.4.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+CPU utilization exceed threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseUsageValue
+  7: hwBaseUsageUnit
+  8: hwBaseUsageThreshold
+EDESC
+#
+#
+#
+EVENT hwCPUUtilizationResume .1.3.6.1.4.1.2011.5.25.129.2.4.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+CPU utilization back to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseUsageValue
+  7: hwBaseUsageUnit
+  8: hwBaseUsageThreshold
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalDown .1.3.6.1.4.1.2011.5.25.129.2.5.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port physical connect down.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalUp .1.3.6.1.4.1.2011.5.25.129.2.5.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port physical connect up.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalNoTrafficAlarm .1.3.6.1.4.1.2011.5.25.129.2.5.3 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port has none traffic.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseTrapTrafficDir
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalNoTrafficClear .1.3.6.1.4.1.2011.5.25.129.2.5.4 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port traffic resume.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseTrapTrafficDir
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalTrafficRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.5.5 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port traffic rise over threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdHighWarning
+  9: hwBaseTrapTrafficDir
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalTrafficClear .1.3.6.1.4.1.2011.5.25.129.2.5.6 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port traffic resume to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdLowWarning
+  9: hwBaseTrapTrafficDir
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalCrcErrorRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.5.7 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port CRC error rise over threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdHighWarning
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalCrcErrorClear .1.3.6.1.4.1.2011.5.25.129.2.5.8 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port CRC error resume to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalEthBroadcastRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.5.9 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the Ethernet port broadcast rise over threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdHighWarning
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalEthBroadcastClear .1.3.6.1.4.1.2011.5.25.129.2.5.10 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the Ethernet port broadcast resume to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseThresholdValue
+  7: hwBaseThresholdUnit
+  8: hwBaseThresholdLowWarning
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalEthHalfDuplexAlarm .1.3.6.1.4.1.2011.5.25.129.2.5.11 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the Ethernet port works on the half-duplex mode.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalEthFullDuplexClear .1.3.6.1.4.1.2011.5.25.129.2.5.12 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the Ethernet port works on the full-duplex mode.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalPortTypeChange .1.3.6.1.4.1.2011.5.25.129.2.5.13 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port type changed.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapLastPortType
+  6: hwBaseTrapCurPortType
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalAutoNegotiateFail .1.3.6.1.4.1.2011.5.25.129.2.5.14 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port auto-negotiation failed.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+EDESC
+#
+#
+#
+EVENT hwPortPhysicalAutoNegotiateResume .1.3.6.1.4.1.2011.5.25.129.2.5.15 "Status Events" Normal
+FORMAT $*
+SDESC
+
+One of the port auto-negotiation resumed.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+EDESC
+#
+#
+#
+EVENT hwStorageUtilizationRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.6.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Storage device utilization rise over threshold.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseUsageValue
+  7: hwBaseUsageUnit
+  8: hwBaseUsageThreshold
+EDESC
+#
+#
+#
+EVENT hwStorageUtilizationResume .1.3.6.1.4.1.2011.5.25.129.2.6.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Storage utilization resume to normal level.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+  6: hwBaseUsageValue
+  7: hwBaseUsageUnit
+  8: hwBaseUsageThreshold
+EDESC
+#
+#
+#
+EVENT hwFIBOverloadSuspend .1.3.6.1.4.1.2011.5.25.129.2.9.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The board is suspended for IPv4/IPv6 FIB capability overload.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: hwFIBOverloadModule
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwFIBOverloadSusResume .1.3.6.1.4.1.2011.5.25.129.2.9.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The board is recovered for FIB capability overload suspend.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: hwFIBOverloadModule
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwFIBOverloadForward .1.3.6.1.4.1.2011.5.25.129.2.9.3 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The board is forwarding for IPv4/IPv6 FIB capability overload.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: hwFIBOverloadModule
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwFIBOverloadFwResume .1.3.6.1.4.1.2011.5.25.129.2.9.4 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The board is recovered for IPv4/IPv6 FIB capability overload forward.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: hwFIBOverloadModule
+  5: entPhysicalName
+EDESC
+#
+#
+#
+EVENT hwPppLoopbackDetect .1.3.6.1.4.1.2011.5.25.129.2.10.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The interface Loopback is detected.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: ifIndex
+  5: ifName
+EDESC
+#
+#
+#
+EVENT hwPppLoopbackDetResume .1.3.6.1.4.1.2011.5.25.129.2.10.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The interface is recovered from Loopback.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: ifIndex
+  5: ifName
+EDESC
+#
+#
+#
+EVENT hwFlowCongestion .1.3.6.1.4.1.2011.5.25.129.2.11.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+
+The object is in congested state and some of the frames are dropped.
+
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalClass
+  5: entPhysicalName
+  6: hwBaseFlowDirectionType
+EDESC
+#
+#
+#
+EVENT hwFlowCongestionResume .1.3.6.1.4.1.2011.5.25.129.2.11.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+
+Alarms of the congested object are cleared.
+
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalClass
+  5: entPhysicalName
+  6: hwBaseFlowDirectionType
+EDESC
+#
+#
+#
+EVENT hwDeviceAbnormalRisingAlarm .1.3.6.1.4.1.2011.5.25.129.2.12.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Device abnormal or pulled out.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalName
+  5: hwBaseTrapRelativeResource
+EDESC
+#
+#
+#
+EVENT hwResExhaustBfdAlarm .1.3.6.1.4.1.2011.5.25.129.2.13.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Failed to allocate resources for BFD because hardware resources were exhausted.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+EDESC
+#
+#
+#
+EVENT hwResExhaustBfdResume .1.3.6.1.4.1.2011.5.25.129.2.13.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+BFD recovered from alarms of hardware resources exhausting.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+EDESC
+#
+#
+#
+EVENT hwResExhaustOamAlarm .1.3.6.1.4.1.2011.5.25.129.2.14.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Failed to allocate resources for OAM because hardware resources were exhausted. 
+MPLS OAM is short for Operation Administration and Maintenance by MPLS. 
+It is used for connectivity verification of MPLS LSP.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+EDESC
+#
+#
+#
+EVENT hwResExhaustOamResume .1.3.6.1.4.1.2011.5.25.129.2.14.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+OAM recovered from alarms of hardware resources exhausting.
+MPLS OAM is short for Operation Administration and Maintenance by MPLS. 
+It is used for connectivity verification of MPLS LSP.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+EDESC
+#
+#
+#
+EVENT hwHdlcLoopbackDetect .1.3.6.1.4.1.2011.5.25.129.2.15.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The interface Loopback is detected.
+Variables:
+  1: ifDescr
+EDESC
+#
+#
+#
+EVENT hwHdlcLoopbackDetResume .1.3.6.1.4.1.2011.5.25.129.2.15.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+The interface is recovered from Loopback.
+Variables:
+  1: ifDescr
+EDESC
+#
+#
+#
+EVENT hwAutoFtpFailAlarm .1.3.6.1.4.1.2011.5.25.129.2.16.1 "Status Events" Normal
+FORMAT $*
+SDESC
+
+This object indicates the software failure in the automatic upgrade system.
+Variables:
+  1: hwBaseTrapReasonDescr
+  2: hwBaseTrapSeverity
+EDESC
+#
+#
+#
+EVENT hwOpticalPowerAbnormal .1.3.6.1.4.1.2011.5.25.129.2.17.1 "Status Events" Normal
+FORMAT $*
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "huawei.hwOpticalPowerAbnormal" -o "hwOpticalPowerAbnormal, hwBaseTrapSeverity:$1. hwBaseTrapProbableCause:$2. hwBaseTrapEventType:$3. entPhysicalContainedIn:$4. entPhysicalName:$5. hwBaseTrapRelativeResource:$6. hwBaseTrapReasonDescr:$7 "
+
+SDESC
+
+Optical rxpower or txpower is exceed threshold value.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC
+#
+#
+#
+EVENT hwOpticalPowerResume .1.3.6.1.4.1.2011.5.25.129.2.17.2 "Status Events" Normal
+FORMAT $*
+SDESC
+
+Optical power resume.
+Variables:
+  1: hwBaseTrapSeverity
+  2: hwBaseTrapProbableCause
+  3: hwBaseTrapEventType
+  4: entPhysicalContainedIn
+  5: entPhysicalName
+  6: hwBaseTrapRelativeResource
+  7: hwBaseTrapReasonDescr
+EDESC

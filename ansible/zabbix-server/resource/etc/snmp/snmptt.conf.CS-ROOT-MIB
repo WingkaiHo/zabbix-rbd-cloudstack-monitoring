@@ -1,0 +1,27 @@
+EVENT usageServerStatus .1.3.6.1.4.1.18060.15.1.2.0.14 "Status Events" Normal
+FORMAT No usage server process running: Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5 
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.usage_server_status" -o "$5 $4"
+SDESC
+No usage server process running                                       
+Variables:
+  1: dataCenterId                                                     
+  2: podId
+  3: clusterId                                                        
+  4: message
+  5: generationTime                                                   
+EDESC
+#
+#
+#
+EVENT managmentNode .1.3.6.1.4.1.18060.15.1.2.0.15 "Status Events" Normal
+FORMAT Management network start or down: Value 0: $A Value 1:$aR  Value 2: $T Value 3: $o Value 4: $aA Value 5: $C Value 6: $e: Ent Value: $+1 $+2 $+3 $+4 $+5 
+EXEC /usr/bin/zabbix_sender -z 127.0.0.1 -p 10051 -s $A -k "cs_cluster.managment_node_status" -o "$5 $4" -vv >>/root/snmptrapper.log 
+SDESC
+Management network CIDR is not configured originally
+Variables:
+  1: dataCenterId
+  2: podId
+  3: clusterId
+  4: message
+  5: generationTime
+EDESC    
