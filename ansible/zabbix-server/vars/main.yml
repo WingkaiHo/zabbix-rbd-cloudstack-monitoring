@@ -1,6 +1,21 @@
-zabbix_server_database_login_host: localhost
-zabbix_server_database_login_password: engine
-zabbix_server_database_login_port: 3306
-zabbix_server_database_login_user: root
-
+#configure the mysql sever and create and init zabbix database
+zabbix_server_database_login_host: "localhost"
+zabbix_server_database_login_password: "engine"
+zabbix_server_database_login_port: "3306"
+zabbix_server_database_login_user: "root"
 zabbix_server_mysql_bindir: ""
+
+#configure the zabbix database histroy and trend tables partition 
+zabbix_date_histroy_keep: "7"
+zabbix_month_trend_keep: "12"
+
+#configure the g2zproxy 
+graphite_web_server: "192.168.20.7"
+
+#configure the sendmail script
+zabbix_sendmail_server_url: "smtp.onecloud.cn"
+zabbix_sendmail_server_port: "25"
+zabbix_sendmail_user: "zabbix@onecloud.cn"
+zabbix_sendmail_password: "123456789"
+
+

@@ -29,13 +29,14 @@
   notify: restart snmpd
 
 - name: start snmpd at boot
+  sudo: yes
   action: service name=snmpd state=started enabled=yes
 
 ##
 # Setup the snmptrapd service 
 ##
 
-# use osd as trap info
+# use oid as trap info
 - name: update the snmptrapd service file 
   sudo: yes
   copy: src=resource/usr/lib/systemd/system/snmptrapd.service dest=/usr/lib/systemd/system/snmptrapd.service owner=root group=root mode="u=rw,g=r,o=r"
@@ -43,29 +44,21 @@
 
 - name: update the snmptrapd conf 
   sudo: yes
-  copy: src=resource/etc/snmp/snmptrap.conf dest=/etc/snmp/snmptrap.conf owner=root group=root mode="u=rw,g=r,o=r"
+  copy: src=resource/etc/snmp/snmptrapd.conf dest=/etc/snmp/snmptrapd.conf owner=root group=root mode="u=rw,g=r,o=r"
   notify: restart snmptrapd 
+
+- name: start snmptrapd at boot
+  sudo: yes
+  action: service name=snmptrapd state=started enabled=yes
+
 
 ##
 # Setup the snmptt service
 ##
 
-#snmptt conf item:
-snmp_conf_item:
-  - snmptt.conf.ENTITY-MIB
-  - snmptt.conf.ENTITY-MIB
-  - snmptt.conf.HUAWEI-BASE-TRAP-MIB
-  - snmptt.conf.HUAWEI-ENTITY-TRAP-MIB
-  - snmptt.conf.HUAWEI-ETHARP-MIB
-  - snmptt.conf.HUAWEI-MIB
-  - snmptt.conf.IANA-ITU-ALARM-TC-MIB
-  - snmptt.conf.ITU-ALARM-TC-MIB
-  - snmptt.conf.JUNIPER-CFGMGMT-MIB
-  - snmptt.conf.JUNIPER-COLLECTOR-MIB
-  - snmptt.conf.JUNIPER-MIB
-  - snmptt.conf.JUNIPER-SMI
-  - snmptt.conf.P-BRIDGE-MIB
-
+- name: update the snmptt ini file
+  sudo: yes
+  copy: src=resource/etc/snmp/snmptt.ini dest=/etc/snmp/snmptt.ini owner=root group=root mode="u=rw,g=r,o=r"
 
 - name: copy snmptt conf over
   sudo: yes
@@ -83,35 +76,30 @@ snmp_conf_item:
       - snmptt.conf.JUNIPER-MIB
       - snmptt.conf.JUNIPER-SMI
       - snmptt.conf.P-BRIDGE-MIB
+  notify: restart snmptt
 
+- name: start snmptt at boot
+  sudo: yes
+  action: service name=snmptt state=started enabled=yes
+
+##
+# Update the PHP configure
+##
 - name: configure php conf
   sudo: yes
-  copy: src=resource/etc/php.conf dest=/etc/php.conf ower=root group=root mode="u=rw,g=r,o=r"
+  copy: src=resource/etc/php.ini dest=/etc/php.ini owner=root group=root mode="u=rw,g=r,o=r"
 
-- name: configure zabbix-server.conf
-  sudo: yes
-  template:
-    dest: /etc/zabbix/zabbix_server.conf
-    src: zabbix_server.conf.j2
-    owner: root
-    group: zabbix
-    mode: 0640
-  notify: restart zabbix-server
-
-- name: ensure started zabbix-server
-  sudo: yes
-  service:
-    name: zabbix-server
-    state: started
-    enabled: yes
-
+##
+# Create the zabbix database in mysql and inject the base data
+##
 - name: create zabbix database user
+  sudo: yes
   mysql_user:
     login_host: "{{ zabbix_server_database_login_host }}"
     login_password: "{{ zabbix_server_database_login_password }}"
     login_port: "{{ zabbix_server_database_login_port }}"
     login_user: "{{ zabbix_server_database_login_user }}"
-    host: "{{ zabbix_server_database_host }}"
+    host: "{{ zabbix_server_database_login_host }}"
     name: "{{ zabbix_server_DBUser }}"
     password: "{{ zabbix_server_DBPassword }}"
     priv: "{{ zabbix_server_DBName }}.*:ALL"
@@ -159,3 +147,117 @@ snmp_conf_item:
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ zabbix_server_mysql_bindir }}"
   when: table_exists.stdout.find('user_history') == -1
+
+
+##
+# migration user configure data zabbix database
+##
+
+##
+# Auto register plugin (auto add snmp interface for dell IDRAC)
+##
+- name: copy zabbix-add-interface to /usr/bin
+  sudo: yes
+  copy: src=resource/usr/bin/zabbix-add-interface dest=/usr/bin/zabbix-add-interface owner=root group=root mode="u=rwx,g=r,o=r"  
+
+##
+# Partition the zabbix database ./partitiontables.sh -h localhost -u root -p engine -d 7 -m 12 -n -s
+##
+
+- name: copy the partitiontables.sh /usr/bin directory 
+  sudo: yes
+  copy: src=resource/usr/bin/partitiontables.sh dest=/usr/bin/partitiontables.sh owner=root group=root mode="u=rwx,g=r,o=r"
+
+- name: check if histroy tables have been partition
+  sudo: yes
+  stat: path=/usr/local/zabbix/cron.d/housekeeping.sh
+  register: zabbix_housekeeping
+
+- name: execute partitiontables.sh at if zabbix tables have not been partition 
+  sudo: yes
+  shell: /usr/bin/partitiontables.sh -h {{ zabbix_server_database_login_host }} -u {{ zabbix_server_database_login_user }} -p {{ zabbix_server_database_login_password }} -d {{ zabbix_date_histroy_keep }} -n 
+  when: zabbix_housekeeping.stat.exists is defined and zabbix_housekeeping.stat.exists == False
+
+
+
+##
+# Copy the mail template to zabbix server
+#
+- name: zabbix send mail template
+  sudo: yes
+  template:
+    dest: /usr/lib/zabbix/alertscripts
+    src: zabbix_sendmail.py.j2
+    owner: zabbix
+    group: zabbix
+    mode: 0700
+
+##
+# Setup the zabbix server configure and start zabbix server
+##
+- name: configure zabbix-server.conf
+  sudo: yes
+  template:
+    dest: /etc/zabbix/zabbix_server.conf
+    src: zabbix_server.conf.j2
+    owner: root
+    group: zabbix
+    mode: 0640
+  notify: restart zabbix-server
+
+- name: ensure started zabbix-server
+  sudo: yes
+  service:
+    name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: start zabbix-server at boot
+  sudo: yes
+  action: service name=zabbix-server state=started enabled=yes
+
+##
+# Start zabbix web server
+## 
+- name: start httpd at boot
+  sudo: yes
+  action: service name=httpd state=started enabled=yes
+
+- name: restart httpd
+  sudo: yes
+  service:
+    name: httpd
+    state: restarted
+
+##
+# Install the graphite to zabbix proxy
+##
+
+- name: copy the g2zproxy plugins directory
+  sudo: yes
+  copy: src=resource/graphite-to-zabbix/{{ item }} dest=/tmp/{{ item }} owner=root group=root mode="u=rw,g=r,o=r"
+  with_items:
+      - configparser-3.3.0r2.tar.gz      
+      - graphite-to-zabbix-0.1.6.tar.gz  
+      - py-zabbix-0.6.1.tar.gz
+  notify: install g2zproxy  
+
+- name: Install g2zproxy plugin
+  sudo: yes
+  shell: /usr/bin/pip install /tmp/configparser-3.3.0r2.tar.gz /tmp/graphite-to-zabbix-0.1.6.tar.gz /tmp/py-zabbix-0.6.1.tar.gz
+
+- name: ensure g2proxy_crontab file is up-to-date.
+  sudo: yes
+  template:
+    dest: /etc/g2proxy_crontab
+    src: g2proxy_crontab.j2
+    owner: root
+    group: root
+    mode: "u=rw,g=r,o=r"
+  register: g2proxy_crontab_result
+
+- name: ensure g2proxy_crontab file is active.
+  sudo: yes
+  shell: crontab /etc/g2proxy_crontab
+  when: g2proxy_crontab_result|changed
+

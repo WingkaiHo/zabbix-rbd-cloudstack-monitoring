@@ -13,6 +13,7 @@ zabbix_server_install_packages:
   - { name: snmptt, enablerepo: base }
   - { name: perl-Sys-Syslog.x86_64, enablerepo: base }
   - { name: python-pip.noarch, enablerepo: base }
+  - { name: MySQL-python.x86_64, enablerepo: base }
 
 zabbix_server_AlertScriptsPath: "/usr/lib/zabbix/alertscripts"
 zabbix_server_AllowRoot: "0"
