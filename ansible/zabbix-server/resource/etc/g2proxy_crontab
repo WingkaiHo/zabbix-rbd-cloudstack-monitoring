@@ -1,0 +1,1 @@
+*/1 * * * * g2zproxy -z http://192.168.20.7/zabbix/ -zu admin -zp zabbix -g http://192.168.20.117
