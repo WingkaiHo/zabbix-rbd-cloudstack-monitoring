@@ -33,6 +33,16 @@
   action: service name=snmpd state=started enabled=yes
 
 ##
+# Add cloudstack managerment dns to hosts
+##
+- name: update /etc/hosts
+    blockinfile:
+    dest: /etc/hosts
+    block: |
+        {{ cloudstack_manager_ip }}  {{ cloudstack_manager_hostname }}
+    marker: "# {mark} ansible managed block {{cloudstack_manager_hostname}}"
+
+##
 # Setup the snmptrapd service 
 ##
 
@@ -46,6 +56,7 @@
   sudo: yes
   copy: src=resource/etc/snmp/snmptrapd.conf dest=/etc/snmp/snmptrapd.conf owner=root group=root mode="u=rw,g=r,o=r"
   notify: restart snmptrapd 
+
 
 - name: start snmptrapd at boot
   sudo: yes
@@ -177,8 +188,6 @@
   sudo: yes
   shell: /usr/bin/partitiontables.sh -h {{ zabbix_server_database_login_host }} -u {{ zabbix_server_database_login_user }} -p {{ zabbix_server_database_login_password }} -d {{ zabbix_date_histroy_keep }} -n 
   when: zabbix_housekeeping.stat.exists is defined and zabbix_housekeeping.stat.exists == False
-
-
 
 ##
 # Copy the mail template to zabbix server
