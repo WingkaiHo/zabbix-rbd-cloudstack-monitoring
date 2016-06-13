@@ -1,0 +1,5 @@
+zbx_agent_Port: 10050               # Zabbix Agent Listen Port (if changed also alter tasks/iptables.yml
+zbx_agent_RefreshActiveChecks: 120  # How often list of active checks is refreshed, in seconds.
+zbx_agent_HostMeta:                 # Optional parameter that defines host metadata. It use to tail zabbix-server auto host register which template to link
+zbx_server_Passive: ""              #List of comma delimited IP addresses (or hostnames) of Zabbix servers. Example: '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1'
+zbx_agent_ServerActive: ""  #List of comma delimited IP:port (or hostname:port zbx_agent_ServerActive=127.0.0.1:20051,zabbix.domain,[::1]:30051,::1,[12fc::1])

@@ -1,0 +1,6 @@
+- name: restart zabbix-agent
+  sudo: yes
+  service:
+    name: zabbix-agent
+    state: restarted
+
