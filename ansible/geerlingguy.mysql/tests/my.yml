@@ -1,0 +1,4 @@
+- hosts: localhost
+  roles:
+    - role: geerlingguy.mysql
+      become: yes
