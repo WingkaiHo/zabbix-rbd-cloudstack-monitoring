@@ -18,4 +18,6 @@ zabbix_sendmail_server_port: "25"
 zabbix_sendmail_user: "zabbix@onecloud.cn"
 zabbix_sendmail_password: "123456789"
 
-
+#configure cloudstack manager server
+cloudstack_manager_ip: "192.168.20.1"
+cloudstack_manager_hostname: "csmgr1"

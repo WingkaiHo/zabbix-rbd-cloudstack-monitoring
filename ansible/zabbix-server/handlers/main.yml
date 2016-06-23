@@ -30,8 +30,8 @@
 
 - name: reload systemd
   sudo: yes
-  comand: /usr/bin/systemctl daemon-reload
+  command: /usr/bin/systemctl daemon-reload
 
 - name: install g2zproxy
   sudo: yes
-  comand: /usr/bin/pip install /tmp/configparser-3.3.0r2.tar.gz /tmp/graphite-to-zabbix-0.1.6.tar.gz /tmp/py-zabbix-0.6.1.tar.gz
+  command: /usr/bin/pip install /tmp/configparser-3.3.0r2.tar.gz /tmp/graphite-to-zabbix-0.1.6.tar.gz /tmp/py-zabbix-0.6.1.tar.gz

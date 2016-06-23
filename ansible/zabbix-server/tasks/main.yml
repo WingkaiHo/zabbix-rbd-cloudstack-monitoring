@@ -1,3 +1,12 @@
+##
+#  Setup zabbix epel 
+##
+- name: install zabbix-release epel
+  yum:
+    name: http://repo.zabbix.com/zabbix/2.4/rhel/7/x86_64/zabbix-release-2.4-1.el7.noarch.rpm
+    state: present
+    sudo: yes
+
 - name: install packages
   sudo: yes
   yum:
@@ -36,7 +45,7 @@
 # Add cloudstack managerment dns to hosts
 ##
 - name: update /etc/hosts
-    blockinfile:
+  blockinfile:
     dest: /etc/hosts
     block: |
         {{ cloudstack_manager_ip }}  {{ cloudstack_manager_hostname }}
